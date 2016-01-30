@@ -1,0 +1,152 @@
+/* # Gestion des contributions */
+
+&-contrib
+{
+
+	#{headings(2,6)}
+	{
+		margin-top: smash-size($smash-lh*2);
+	}
+
+	h2
+	{
+		// @extend %title-h2;
+		// margin-top: smash-size($smash-lh*2, 'em', $smash-h2);
+	}
+
+	h3
+	{
+		// @extend %title-h3;
+		// margin-top: smash-size($smash-lh*2, 'em', $smash-h3);
+	}
+
+	h4
+	{
+		// @extend %title-h4;
+		// margin-top: smash-size($smash-lh*2, 'em', $smash-h4);
+	}
+
+	h5
+	{
+		// @extend %title-h5;
+		// margin-top: smash-size($smash-lh*2, 'em', $smash-h5);
+	}
+
+	h6
+	{
+		// @extend %title-h6;
+		// margin-top: smash-size($smash-lh*2, 'em', $smash-h6);
+	}
+
+	h2 + h3 
+	{
+		// margin-top: smash-size($smash-lh, 'em', $smash-h3);
+	}
+
+	h3 + h4
+	{
+		//margin-top: smash-size($smash-lh, 'em', $smash-h4);
+	}
+
+	h4 + h5
+	{
+		//margin-top: smash-size($smash-lh, 'em', $smash-h5);
+	}
+
+	h5 + h6
+	{
+		//margin-top: smash-size($smash-lh, 'em', $smash-h6);
+	}
+
+	//
+
+	p
+	{
+
+	}
+	em
+	{
+
+	}
+	strong
+	{
+
+	}
+	ul
+	{
+
+	}
+	ol
+	{
+
+	}
+
+	iframe,
+	object, 
+	video 
+	{
+		width: 100%;
+	}
+
+	table
+	{
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	th,
+	td 
+	{
+		text-align: left;
+		padding: smash-size( $smash-lh/2 );
+		border: 1px solid;
+	}
+
+	td
+	{
+
+	}
+	th
+	{
+
+	}
+	thead
+	{
+
+	}
+	tfoot
+	{
+
+	}
+	tbody
+	{
+
+	}
+	q
+	{
+
+	}
+	cite
+	{
+
+	}
+	blockquote
+	{
+		> *:last-child 
+		{
+			margin-bottom: 0;
+		}
+	}
+	code
+	{
+
+	}
+	figure
+	{
+
+	}
+	figcaption
+	{
+
+	}
+}

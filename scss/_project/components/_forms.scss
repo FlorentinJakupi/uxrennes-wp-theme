@@ -1,0 +1,91 @@
+/* # Formulaires */
+
+@at-root 
+{
+
+	//
+	// Generic form styles
+	//
+
+	input,
+	textarea,
+	button,
+	select
+	{
+		@include border-radius(0);
+	}
+	
+	input,
+	textarea
+	{
+		@include input-placeholder
+		{
+			// This won't work on inpyt[type="number"] in Firefox
+			// cf. https://bugzilla.mozilla.org/show_bug.cgi?id=1004130
+			@include opacity(1);
+		}
+
+		&:focus,	
+		&:active 
+		{
+			@include input-placeholder
+			{
+				// This won't work on inpyt[type="number"] in Firefox
+				// cf. https://bugzilla.mozilla.org/show_bug.cgi?id=1004130
+				font-weight: bold;
+			}
+		}
+
+		// Webkit autofill background-color
+		&:-webkit-autofill
+		{
+			-webkit-box-shadow: 0 0 0px 1000px white inset;
+			-webkit-text-fill-color: black;
+		}
+	}
+
+	input[type="radio"],
+	input[type="checkbox"]
+	{
+		padding: 0 !important; // we'll never use padding on these two
+	}
+
+	select 
+	{
+		line-height: normal;
+	}
+
+	/* Remove IE9 and IE10 image cross that appears when focusing inputs */
+	input::-ms-clear
+	{
+		display: none;
+	}
+
+	// IE9 line-height fix
+	input 
+	{
+		.ie9 &
+		{
+			line-height: normal !important;
+		}
+	}
+
+	/**
+	 * SUBMIT
+	 */
+	button 
+	{
+		padding: 0;
+		background: none;
+		color: inherit;
+		font: inherit;
+		line-height: inherit;
+		border: 0;	
+		@include appearance(none);
+
+		img 
+		{
+			display: block;
+		}
+	}
+}

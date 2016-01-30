@@ -1,0 +1,80 @@
+/* # Imports */
+
+@import '../../config';
+
+/* # Imports des librairies tierces */
+
+/*
+Les autres sont optionnelles mais conseillées :
+
+ - `normalize` pour l’uniformisation ;
+ - `sass-mq` pour le _responsive web design_ ;
+ - `bourbon` pour les utilitaires ;
+ - `compass` pour les _sprites_.
+ 
+Note : attention aux conflits possibles entre Bourbon et Compass.
+ 
+*/
+
+@import 'compass';
+@import 'modularized-normalize-scss/normalize.scss';
+@import 'sass-mq/_mq.scss';
+
+/* # Imports des utilitaires */
+
+@import 'functions';
+@import 'mixins';
+
+/* # Imports des polices font-face */
+
+@import '../../_project/fonts/*';
+
+/* # Imports des styles de base */
+
+@import '../../_project/base/*';
+
+ 
+/* # Imports des _plugins_ */
+
+@import '../../_project/plugins/hashgrid';
+
+/* # Imports des utilitaires (préfixés) */
+
+/*
+Il est possible de sortir de cette encapsulation avec `@at-root{}`.
+*/
+
+.#{$smash-prefix-framework}
+{
+  @import "../utils/*";
+}
+
+/* # Imports des styles de base */
+.#{$smash-prefix-project}
+{
+	@import "../../_project/base-ui/*";
+}
+
+/* # Imports des styles pour l’agencement général (préfixés) */
+
+.#{$smash-prefix-project}
+{
+	@import "../../_project/layout/*";
+}
+
+/* # Imports des composants (préfixés) */
+
+.#{$smash-prefix-project}
+{
+	@import "../../_project/components/*";
+}
+ 
+/* # Imports des pages (préfixés) */
+
+.#{$smash-prefix-project}
+{  
+	@import "../../_project/pages/*";
+}
+/* # Imports de l’espace temporaire de travail */
+
+@import '../../_project/shame/*';

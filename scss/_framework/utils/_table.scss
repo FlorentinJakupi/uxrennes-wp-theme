@@ -1,0 +1,191 @@
+/* # Tableaux */
+
+&-table
+{
+
+/* # Zebra */
+
+/*
+Note: uniquement appliqué sur le `tbody`.
+*/
+
+  &-zebra
+  {
+      tbody
+      {
+          & > *
+          {
+              &:nth-child(even)
+              {
+                  & > *
+                  {
+  
+                  }
+              }
+          }
+      }
+      &.#{$smash-prefix-framework}-table
+      {
+          & > *
+          {
+              &:nth-child(even)
+              {
+                  & > *
+                  {
+  
+                  }
+              }
+          }
+      }
+  }
+
+/*
+    <table class="rm-table-zebra">
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+    </table>
+*/
+
+/* # Survol des lignes */
+
+/*
+Note: ne fonctionne pas au clavier.
+*/
+
+  &-hover
+  {
+      tbody
+      {
+          & > *
+          {
+              &:hover
+              {
+                  & > *
+                  {
+  
+                  }
+              }
+          }
+      }
+      &.#{$smash-prefix-framework}-table
+      {
+          & > *
+          {
+              &:hover
+              {
+                  & > *
+                  {
+  
+                  }
+              }
+          }
+      }
+  }
+
+/*
+    <table class="rm-table-hover">
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+    </table>
+*/
+
+/* # Mise en forme */
+
+/*
+    <table class="rm-table-fixed rm-w100p">
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</td>
+      </tr>
+    </table>
+*/
+
+  &-auto
+  {
+      table-layout: auto;
+  }
+  &-fixed
+  {
+      table-layout: fixed;
+  }
+
+/* # Bordures */
+
+/*
+    <table class="rm-table-border">
+      <tr>
+        <td>Lorem ipsum dolor</td>
+        <td>Lorem ipsum dolor</td>
+      </tr>
+      <tr>
+        <td>Lorem ipsum dolor</td>
+        <td>Lorem ipsum dolor</td>
+      </tr>
+    </table>
+*/
+
+  &-border
+  {
+      td,
+      th
+      {
+          border: 1px solid;
+      }
+      &.#{$smash-prefix-framework}-table
+      {
+          & > *
+          {
+              & > *
+              {
+                  border: 1px solid;
+              }
+          }
+      }
+  }
+
+/* # Fusion des bordures */
+
+/*
+    <table class="rm-table-border rm-table-separate">
+      <tr>
+        <td>Lorem ipsum dolor</td>
+        <td>Lorem ipsum dolor</td>
+      </tr>
+      <tr>
+        <td>Lorem ipsum dolor</td>
+        <td>Lorem ipsum dolor</td>
+      </tr>
+    </table>
+    <table class="rm-table-border rm-table-collapse">
+      <tr>
+        <td>Lorem ipsum dolor</td>
+        <td>Lorem ipsum dolor</td>
+      </tr>
+      <tr>
+        <td>Lorem ipsum dolor</td>
+        <td>Lorem ipsum dolor</td>
+      </tr>
+    </table>
+*/
+
+  &-separate
+  {
+      border-collapse: separate;
+  }
+  &-collapse
+  {
+      border-collapse: collapse;
+  }
+}

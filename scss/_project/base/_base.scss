@@ -1,0 +1,357 @@
+/* # Styles génériques */
+
+/* # Modèle de boîte */
+
+@if $smash-box-sizing
+{
+	*
+	{
+		&,
+		&:before,
+		&:after
+		{
+			box-sizing: border-box;
+		}
+	}	
+}
+
+/* # Couleurs */
+
+/*
+On force des couleurs de fond et de texte pour contourner les préférences utilisateurs.
+*/
+
+html
+{
+	background-color: $white;
+	color: black;
+
+	// Magic line that smoothes font-rendering on WebKit engines.
+	-webkit-font-smoothing: antialiased;
+	
+	// Magic line that smoothes font-rendering on Gecko engines.
+	-moz-osx-font-smoothing: grayscale;
+
+	// Change the focus color of clicked element in iOS	
+	-webkit-tap-highlight-color: transparent;
+}
+
+::-moz-selection
+{ 
+	// color: white;
+	// background-color: grey;
+}
+
+::selection
+{ 
+	// color: white;
+	// background-color: grey;
+} 
+
+*:focus 
+{
+	//outline-color: $white;
+}
+
+abbr[title]
+{
+	border: 0;
+	text-decoration: none;
+}
+
+body 
+{
+	margin: 0;
+	
+	&.logged-in
+	{
+		&:before 
+		{
+			display: block;
+		}
+
+		&.admin-bar:before 
+		{
+			@include mq($until: wordpress_admin_bar)
+			{
+				top: smash-size( 46px );
+			}
+
+			@include mq(wordpress_admin_bar)
+			{
+				top: smash-size( 32px );
+			}
+		}
+	}
+}
+
+ins 
+{
+	text-decoration: none;
+}
+
+path 
+{
+	fill: currentColor;
+}
+
+/*
+# États des liens
+*/
+
+a
+{   
+	color: inherit;
+	text-decoration: none;
+	border-bottom: 1px solid;
+	
+	&:hover,
+	&:focus
+	{
+		
+	}
+	&:visited
+	{
+		
+	}
+
+	&.#{$smash-prefix}-block
+	{
+		border-bottom: 0 !important;
+		text-decoration: none !important;
+		background-image: none !important;
+	}
+}
+
+// Removing focus in an accessible way
+a,
+button
+{
+	&:hover,
+	&:active 
+	{
+		outline: none;
+	}
+}
+
+/* # Images (et médias) */
+
+/*
+Par défaut les images de fonds ne sont pas répétées.
+*/
+
+*
+{
+	&,
+	&:before,
+	&:after
+	{
+		background-repeat: no-repeat;
+	}
+}
+
+img,
+audio,
+canvas,
+video,
+svg,
+figure,
+iframe,
+object
+{
+	max-width: 100%;
+}
+
+img,
+audio,
+canvas,
+video,
+figure,
+iframe,
+object
+{
+	height: auto;
+}
+
+object, 
+video, 
+iframe 
+{
+	display: block;
+}
+
+img,
+audio,
+canvas,
+svg
+{
+	@include inline-block(top);
+}
+
+#{headings()}
+{
+	font-size: inherit;
+	line-height: inherit;
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* # Marges par défaut */
+
+p,
+table,
+dl,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+address,
+li,
+figure,
+blockquote,
+.#{$smash-prefix-framework}-table
+{
+	margin-top: 0;
+	margin-bottom: smash-size($smash-lh, $smash-fs0);
+}
+
+pre 
+{
+	white-space: pre-wrap;
+}
+
+/*
+Note : pas de marge basse lors des imbrications.
+*/
+
+ul,
+ol,
+dl
+{
+	ul,
+	ol,
+	dl
+	{
+		margin-bottom: 0;
+	}
+}
+
+ul, 
+ol 
+{
+	padding-left: 0;
+	list-style-type: none;
+}
+
+
+
+/* # Séparateur */
+
+/*
+Le décalage sur le rythme vertical provoqué par la bordure est corrigé par la marge négative.
+Le décalage visuel provoqué par la marge négative est annulé par le positionnement.
+*/
+
+hr
+{
+	clear: both;
+	border: 0;
+	border-top:  1px solid;
+	margin-top: -1px;
+	top:         1px;
+	position: relative;
+}
+
+/* # _Resize_ sur les _textareas_ */
+
+/*
+	<p>
+		<label for="textarea">
+			<span class="block">Lorem ipsum dolor</span>
+			<span class="block"><textarea id="textarea" name="textarea"></textarea></span>
+		</label>
+	</p>
+	*/
+
+	textarea
+	{
+		resize: vertical;
+		overflow: auto;
+		min-height: smash-size($smash-lh * 2);
+	}
+
+	/* # _Reset_ sur les _fieldsets_ */
+
+	/* http://thatemil.com/blog/2015/01/03/reset-your-fieldset/ */
+
+/*
+	<fieldset class="rm-reset">
+	  <legend>Lorem</legend>
+	  <p>Lorem ipsum dolor</p>
+	</fieldset>
+	*/
+
+	fieldset.#{$smash-prefix-framework}-reset
+	{
+		border:    0;
+		margin:    0;
+		min-width: 0;
+		padding: 0.01em 0 0 0;
+		
+		legend
+		{
+			padding: 0;
+			display: table;
+		}
+  body:not(:-moz-handler-blocked) & // fx
+  {
+  	display: table-cell;
+  }
+}
+
+@if $smash-box-sizing
+{
+	input[type='search']
+	{
+		box-sizing: border-box;
+	}
+}
+
+[hidden]  // IE <= 10
+{
+	display: none;
+}
+
+/* # WordPress */
+
+.post-edit-link-container
+{
+	position: fixed;
+	z-index: 9;
+	left: 0;
+	bottom: 0;
+	background-color: black;
+	color: $white;
+	margin-bottom: 0;
+	padding: smash-size(14px);
+	width: smash-size(50px);
+	height: smash-size(50px);
+	@include border-radius(0 50% 0 0);
+
+	a 
+	{
+		display: block;
+		text-decoration: none;
+		border-bottom: 0;
+	}
+}
+
+.screen-reader-text
+{
+	@include smash-visually-hidden();
+}

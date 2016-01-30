@@ -1,0 +1,11 @@
+/* # Typography */
+
+@at-root 
+{
+	body,
+	.#{$smash-prefix-framework}-body
+	{
+		@include smash-typo($smash-body, $smash-bfs);
+	}
+}
+

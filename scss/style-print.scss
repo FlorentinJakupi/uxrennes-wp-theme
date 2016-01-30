@@ -1,0 +1,102 @@
+/* # Styles dédiés à l’impression */
+
+/* # Import des partiels */
+
+/* Ils sont suffisement génériques pour pouvoir servir à l’impression. */
+
+$smash-rem: false;
+
+@import 'config';
+
+@import 'compass';
+@import 'sass-mq/_mq.scss';
+
+@import '_framework/core/functions';
+@import '_framework/core/mixins';
+
+@import '_project/fonts/fonts';
+@import '_project/base/base';
+
+/* # Texte principal */
+
+body
+{
+    font-size:   smash-size($smash-fs0, null, 'pt');
+    line-height: smash-size($smash-lh, null, 'pt');
+}
+
+/* Tailles redéfinies en points. */
+
+p,
+table,
+dl,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+.#{$smash-prefix-framework}-table
+{
+    margin-bottom: smash-size($smash-lh, null, 'pt');
+}
+
+ul,
+ol,
+dl
+{
+    ul,
+    ol,
+    dl
+    {
+        margin-bottom: 0;
+    }
+}
+
+textarea
+{
+  min-height: smash-size($smash-lh * 2, null, 'pt');
+}
+
+/* # Displays */
+
+.#{$smash-prefix-framework}
+{
+  &-print-none
+  {
+    display: none;
+  }
+  &-block
+  {
+    display: block;
+  }
+  &-inline
+  {
+    display: inline;
+  }
+  &-inline-block
+  {
+    display: inline-block;
+  }
+  &-table
+  {
+    display: table;
+    
+    & > *
+    {
+      display: table-row;
+    
+      & > *
+      {
+        display: table-cell;
+      }
+    }
+  }
+  &-flex
+  {
+    display: flex;
+  }
+}

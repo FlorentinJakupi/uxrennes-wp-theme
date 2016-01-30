@@ -1,0 +1,120 @@
+/* # #grid */
+
+#grid
+{
+
+/*
+Le conteneur est positionné par dessus le contenu. Sa hauteur sera caclulée en JS.
+*/
+
+  overflow: hidden;
+  position: absolute;
+  left:  0;
+  right: 0;
+  top:   0;
+  
+/*
+La grille horizontale est gérée via des `gradients`.
+*/
+  
+  background-image: linear-gradient(transparent calc(100% - 1px), $smash-debug 100%);
+  
+  background-position: 0 0,
+                       0 smash-size($smash-lh / 2);
+  
+  background-size: 100px smash-size($smash-lh),
+                   100px smash-size($smash-lh);
+  
+  background-repeat: repeat;
+  
+  .horiz
+  {
+    height: smash-size($smash-lh);
+  }
+  
+/*
+La grille verticale est gérée via des `backgrounds`.
+*/
+    
+  .vert-container
+  {
+    $grid-width-desktop: smash-size(smash-grid-cols-width($smash-cols-desktop) + ($smash-gutter * 2));
+  
+    width:       $grid-width-desktop !important;
+    margin-left: $grid-width-desktop / -2;
+    
+    left: 50%;
+  }
+  .vert
+  {
+    width:       smash-size($smash-col);
+    margin-left: smash-size($smash-gutter);
+    
+    background-color: transparentize(black, 0.85);
+  }
+    
+/* # La grille horizontale simple */
+
+/*
+On masque la grille verticale.
+*/
+    
+  &.grid-1
+  {
+    .vert
+    {
+      background-color: transparent;
+    }
+  }
+
+/* # La grille horizontale double */
+
+/*
+On masque la grille verticale et on passe un double `gradient`.
+*/
+  
+  &.grid-2
+  {
+    background-image: linear-gradient(transparent calc(100% - 1px), $smash-debug 100%),
+                      linear-gradient(transparent calc(100% - 1px), transparentize(black, 0.5) 100%);
+                    
+    .vert
+    {
+      background-color: transparent;
+    }
+  }
+  
+/* # La grille verticale */
+
+/*
+On masque la grille horizontale.
+*/
+  
+  &.grid-3
+  {
+    background-image: none;
+  }
+  
+/* # Toutes les grilles */
+
+/*
+On passe un double `gradient`.
+*/
+  
+  &.grid-4
+  {
+    background-image: linear-gradient(transparent calc(100% - 1px), $smash-debug 100%),
+                      linear-gradient(transparent calc(100% - 1px), transparentize(black, 0.5) 100%);
+  }
+  
+/* # La grille horizontale simple et la grille verticale */
+
+/*
+Cas par défaut.
+*/
+  
+  &.grid-5
+  {
+  
+  }
+}
