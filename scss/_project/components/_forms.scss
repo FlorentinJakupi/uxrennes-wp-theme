@@ -108,9 +108,17 @@
 	}
 
 	// Webkit autofill background-color
-	input:-webkit-autofill
+	input
 	{
-		-webkit-box-shadow: 0 0 0px 1000px $white inset;
+		&:-webkit-autofill
+		{
+			-webkit-box-shadow: 0 0 0px 1000px $white inset;
+		}
+	
+		&::-ms-clear
+		{
+			display: none;
+		}
 	}
 
 
