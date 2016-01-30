@@ -1,21 +1,24 @@
 /* # Styles génériques */
 
-/* # Modèle de boîte */
-
-@if $smash-box-sizing
+@at-root
 {
-	*
-	{
-		&,
-		&:before,
-		&:after
-		{
-			box-sizing: border-box;
-		}
-	}	
-}
 
-/* # Couleurs */
+	/* # Modèle de boîte */
+
+	@if $smash-box-sizing
+	{
+		*
+		{
+			&,
+			&:before,
+			&:after
+			{
+				box-sizing: border-box;
+			}
+		}	
+	}
+
+	/* # Couleurs */
 
 /*
 On force des couleurs de fond et de texte pour contourner les préférences utilisateurs.
@@ -24,8 +27,8 @@ On force des couleurs de fond et de texte pour contourner les préférences util
 html
 {
 	background-color: $white;
-	color: black;
-
+	color: $black;
+	
 	// Magic line that smoothes font-rendering on WebKit engines.
 	-webkit-font-smoothing: antialiased;
 	
@@ -34,65 +37,9 @@ html
 
 	// Change the focus color of clicked element in iOS	
 	-webkit-tap-highlight-color: transparent;
-}
-
-::-moz-selection
-{ 
-	// color: white;
-	// background-color: grey;
-}
-
-::selection
-{ 
-	// color: white;
-	// background-color: grey;
-} 
-
-*:focus 
-{
-	//outline-color: $white;
-}
-
-abbr[title]
-{
-	border: 0;
-	text-decoration: none;
-}
-
-body 
-{
-	margin: 0;
 	
-	&.logged-in
-	{
-		&:before 
-		{
-			display: block;
-		}
-
-		&.admin-bar:before 
-		{
-			@include mq($until: wordpress_admin_bar)
-			{
-				top: smash-size( 46px );
-			}
-
-			@include mq(wordpress_admin_bar)
-			{
-				top: smash-size( 32px );
-			}
-		}
-	}
-}
-
-ins 
-{
-	text-decoration: none;
-}
-
-path 
-{
-	fill: currentColor;
+	// Optimize legibility if possible
+	text-rendering: optimizeLegibility;
 }
 
 /*
@@ -101,36 +48,19 @@ path
 
 a
 {   
-	color: inherit;
+	color: $red;
 	text-decoration: none;
-	border-bottom: 1px solid;
+	@include background-image(linear-gradient(rgba(#000,0) 94%, rgba($red,1) 100%));
 	
 	&:hover,
 	&:focus
 	{
-		
+		background: none;
 	}
+
 	&:visited
 	{
-		
-	}
 
-	&.#{$smash-prefix}-block
-	{
-		border-bottom: 0 !important;
-		text-decoration: none !important;
-		background-image: none !important;
-	}
-}
-
-// Removing focus in an accessible way
-a,
-button
-{
-	&:hover,
-	&:active 
-	{
-		outline: none;
 	}
 }
 
@@ -150,50 +80,22 @@ Par défaut les images de fonds ne sont pas répétées.
 	}
 }
 
-img,
-audio,
-canvas,
-video,
-svg,
-figure,
-iframe,
-object
-{
-	max-width: 100%;
-}
+/*
+Et les images de contenus sont forcées en `block`.
+*/
 
 img,
 audio,
 canvas,
 video,
-figure,
-iframe,
-object
-{
-	height: auto;
-}
-
-object, 
-video, 
-iframe 
-{
-	display: block;
-}
-
-img,
-audio,
-canvas,
 svg
 {
 	@include inline-block(top);
 }
 
-#{headings()}
+figure
 {
-	font-size: inherit;
-	line-height: inherit;
-	font-style: normal;
-	font-weight: normal;
+	margin: 0;
 }
 
 /* # Marges par défaut */
@@ -203,6 +105,7 @@ table,
 dl,
 ul,
 ol,
+li,
 h1,
 h2,
 h3,
@@ -210,20 +113,26 @@ h4,
 h5,
 h6,
 hr,
-address,
-li,
-figure,
-blockquote,
-.#{$smash-prefix-framework}-table
+dl,
+dd,
+pre,
+.#{$smash-prefix-framework}-table,
+.wp-caption,
+.contact-form > div,
+.entry-thumb,
+.size-large,
+.size-full
 {
 	margin-top: 0;
-	margin-bottom: smash-size($smash-lh, $smash-fs0);
+	margin-bottom: smash-size($smash-lh, 'em');
 }
+
 
 pre 
 {
 	white-space: pre-wrap;
 }
+
 
 /*
 Note : pas de marge basse lors des imbrications.
@@ -241,14 +150,30 @@ dl
 	}
 }
 
-ul, 
-ol 
+
+dt 
 {
-	padding-left: 0;
-	list-style-type: none;
+	font-weight: bold;
 }
 
+dd 
+{
+	margin-left: 0;
+}
 
+ins 
+{
+	text-decoration: none;
+}
+
+//
+// Videos
+//
+video 
+{
+	width: 100%    !important;
+	height: auto   !important;
+}
 
 /* # Séparateur */
 
@@ -290,7 +215,7 @@ hr
 	/* http://thatemil.com/blog/2015/01/03/reset-your-fieldset/ */
 
 /*
-	<fieldset class="rm-reset">
+	<fieldset class="smash-reset">
 	  <legend>Lorem</legend>
 	  <p>Lorem ipsum dolor</p>
 	</fieldset>
@@ -301,17 +226,17 @@ hr
 		border:    0;
 		margin:    0;
 		min-width: 0;
-		padding: 0.01em 0 0 0;
-		
+		padding: 0.000001em 0 0 0;
+
 		legend
 		{
 			padding: 0;
 			display: table;
 		}
-  body:not(:-moz-handler-blocked) & // fx
-  {
-  	display: table-cell;
-  }
+	body:not(:-moz-handler-blocked) & // fx
+	{
+	//    	display: table-cell;
+	}
 }
 
 @if $smash-box-sizing
@@ -322,36 +247,26 @@ hr
 	}
 }
 
-[hidden]  // IE <= 10
-{
-	display: none;
-}
-
-/* # WordPress */
-
-.post-edit-link-container
-{
-	position: fixed;
-	z-index: 9;
-	left: 0;
-	bottom: 0;
-	background-color: black;
-	color: $white;
-	margin-bottom: 0;
-	padding: smash-size(14px);
-	width: smash-size(50px);
-	height: smash-size(50px);
-	@include border-radius(0 50% 0 0);
-
-	a 
-	{
-		display: block;
-		text-decoration: none;
-		border-bottom: 0;
-	}
-}
-
-.screen-reader-text
-{
-	@include smash-visually-hidden();
+  [hidden]  // IE <= 10
+  {
+  	display: none;
+  }
+  
+  
+  /* # Pseudo-éléments */
+  
+  [data-before]
+  {
+  	&:before
+  	{
+  		content: attr(data-before);
+  	}
+  }
+  [data-after]
+  {
+  	&:after
+  	{
+  		content: attr(data-after);
+  	}
+  }
 }

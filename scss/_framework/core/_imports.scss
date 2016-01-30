@@ -33,10 +33,9 @@ Note : attention aux conflits possibles entre Bourbon et Compass.
 
 @import '../../_project/base/*';
 
- 
 /* # Imports des _plugins_ */
 
-@import '../../_project/plugins/hashgrid';
+@import '../../_project/plugins/*';
 
 /* # Imports des utilitaires (préfixés) */
 
@@ -75,6 +74,14 @@ Il est possible de sortir de cette encapsulation avec `@at-root{}`.
 {  
 	@import "../../_project/pages/*";
 }
+
+/* # Imports des modules (préfixés) */
+
+.#{$smash-prefix-project}
+{  
+	@import "../../_project/modules/*";
+}
+
 /* # Imports de l’espace temporaire de travail */
 
 @import '../../_project/shame/*';

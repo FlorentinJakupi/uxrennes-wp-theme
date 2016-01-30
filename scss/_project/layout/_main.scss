@@ -1,0 +1,18 @@
+/* # Styles spécifiques au contenu */
+
+&-main
+{
+	.#{$smash-prefix}-grid-container
+	{	
+		@include mq($until: desktop)
+		{
+			padding-bottom: smash-size($smash-lh, 'em');
+		}
+
+		@include mq(desktop)
+		{
+			padding-right: smash-size(smash-grid-cols-width(3) + $smash-gutter);
+			padding-bottom: smash-size($smash-lh*3, 'em');
+		}
+	}
+}

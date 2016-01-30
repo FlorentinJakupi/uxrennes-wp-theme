@@ -1,0 +1,23 @@
+/* # Logo */
+
+&-logo
+{
+	&-main 
+	{
+		width: smash-size(150px);
+	  	margin-right: auto;
+	  	margin-left: auto;
+
+		@include mq($until: almost_tablet)
+		{
+			margin-top: smash-size($smash-lh, 'em');
+			margin-bottom: smash-size($smash-lh, 'em');
+		}
+
+		@include mq(almost_tablet)
+		{	
+			margin-top: smash-size($smash-lh*2, 'em');
+			margin-bottom: smash-size($smash-lh*2, 'em');
+		}
+	}
+}

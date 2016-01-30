@@ -6,139 +6,139 @@
 Pourcentages augmentés de 5 en 5. Format générique : `&-w50p`.
 */
 
-$smash-i: 100;
+// $smash-i: 100;
 
-@while $smash-i >= 0
-{
-  &-w#{$smash-i}p
-  {
-    width: $smash-i * 1%;
-  }
+// @while $smash-i >= 0
+// {
+//   &-w#{$smash-i}p
+//   {
+//     width: $smash-i * 1%;
+//   }
   
-  &-h#{$smash-i}p
-  {
-    height: $smash-i * 1%;
-  }
+//   &-h#{$smash-i}p
+//   {
+//     height: $smash-i * 1%;
+//   }
   
-  $smash-i: $smash-i - 5;
-}
+//   $smash-i: $smash-i - 5;
+// }
 
-/*
-Même chose pour les tiers.
-*/
+// /*
+// Même chose pour les tiers.
+// */
 
-&-w33p
-{
-  width: 100 / 3 * 1%;
-}
-&-w66p
-{
-  width: 100 / 3 * 2 * 1%;
-}
+// &-w33p
+// {
+//   width: 100 / 3 * 1%;
+// }
+// &-w66p
+// {
+//   width: 100 / 3 * 2 * 1%;
+// }
 
-&-h33p
-{
-  height: 100 / 3 * 1%;
-}
-&-h66p
-{
-  height: 100 / 3 * 2 * 1%;
-}
+// &-h33p
+// {
+//   height: 100 / 3 * 1%;
+// }
+// &-h66p
+// {
+//   height: 100 / 3 * 2 * 1%;
+// }
 
-/* # Flottants et rétablissement du flux */
+// /* # Flottants et rétablissement du flux */
 
-/*
-    <div class="rm-cols">
-      <div class="rm-col rm-w33p">Lorem ipsum</div>
-      <div class="rm-col rm-w66p">Lorem ipsum</div>
-    </div>
-*/
+// /*
+//     <div class="rm-cols">
+//       <div class="rm-col rm-w33p">Lorem ipsum</div>
+//       <div class="rm-col rm-w66p">Lorem ipsum</div>
+//     </div>
+// */
 
-&-clearfix,
-&-cols,
-&-grid
-{
-  @include smash-clearfix;
-}
-&-col,
-&-grid_col,
-&-float,
-&-float-left
-{
-  float: left;
-}
-&-float-right
-{
-  float: right;
-}
-&-float-none
-{
-  float: none;
-}
+// &-clearfix,
+// &-cols,
+// &-grid
+// {
+//   @include smash-clearfix;
+// }
+// &-col,
+// &-grid_col,
+// &-float,
+// &-float-left
+// {
+//   float: left;
+// }
+// &-float-right
+// {
+//   float: right;
+// }
+// &-float-none
+// {
+//   float: none;
+// }
 
 
-/* # Colonnes via inline-block */
+// /* # Colonnes via inline-block */
 
-/*
-http://www.barrelny.com/blog/text-align-justify-and-rwd/
-*/
+// /*
+// http://www.barrelny.com/blog/text-align-justify-and-rwd/
+// */
 
-/*
-Note : une marge négative est utilisée pour contrer l’espace ajouté par le `:after`
-*/
+// /*
+// Note : une marge négative est utilisée pour contrer l’espace ajouté par le `:after`
+// */
 
-/*
-    <div class="rm-inline-block-auto">
-      <div class="rm-w20p">Lorem ipsum</div>
-      <div class="rm-w20p">Lorem ipsum</div>
-      <div class="rm-w20p">Lorem ipsum</div>
-      <div class="rm-w20p">Lorem ipsum</div>
-    </div>
-*/
 
-&-inline-block-auto
-{
-  font-size: 0;
-  text-align: justify;
-  text-justify: distribute-all-lines;
-  margin-bottom: $smash-lh * -1;
-  margin-bottom: smash-size($smash-lh * -1, null, 'rem');
+//     <div class="rm-inline-block-auto">
+//       <div class="rm-w20p">Lorem ipsum</div>
+//       <div class="rm-w20p">Lorem ipsum</div>
+//       <div class="rm-w20p">Lorem ipsum</div>
+//       <div class="rm-w20p">Lorem ipsum</div>
+//     </div>
+
+
+// &-inline-block-auto
+// {
+//   font-size: 0;
+//   text-align: justify;
+//   text-justify: distribute-all-lines;
+//   margin-bottom: $smash-lh * -1;
+//   margin-bottom: smash-size($smash-lh * -1, null, 'rem');
   
-  &:after
-  {
-    content: '';
-    display: inline-block;
-    width: 100%;
-  }
+//   &:after
+//   {
+//     content: '';
+//     display: inline-block;
+//     width: 100%;
+//   }
   
-  & > *
-  {
-    font-size: $smash-fs0;
-    font-size: smash-size($smash-fs0, null, 'rem');
-    display: inline-block;
-    vertical-align: top;
-    text-align: left;
-  }
+//   & > *
+//   {
+//     font-size: $smash-fs0;
+//     font-size: smash-size($smash-fs0, null, 'rem');
+//     display: inline-block;
+//     vertical-align: top;
+//     text-align: left;
+//   }
   
-/* # Placeholder à ajouter pour éviter les centrages des blocs */
+// /* # Placeholder à ajouter pour éviter les centrages des blocs */
 
-/*
-Nombre de `placeholder` à ajouter = nombre de blocs maximum par ligne - 2.
-*/
+// /*
+// Nombre de `placeholder` à ajouter = nombre de blocs maximum par ligne - 2.
+// */
 
-/*
-    <div class="rm-inline-block-auto">
-      <div class="rm-w33p">Lorem ipsum</div>
-      <div class="rm-w33p">Lorem ipsum</div>
-      <div class="rm-w33p">Lorem ipsum</div>
-      <div class="rm-w33p">Lorem ipsum</div>
-      <div class="rm-w33p">Lorem ipsum</div>
-      <div class="rm-w33p rm-inline-block-auto_placeholder"></div>
-    </div>
-*/
+// /*
+//     <div class="rm-inline-block-auto">
+//       <div class="rm-w33p">Lorem ipsum</div>
+//       <div class="rm-w33p">Lorem ipsum</div>
+//       <div class="rm-w33p">Lorem ipsum</div>
+//       <div class="rm-w33p">Lorem ipsum</div>
+//       <div class="rm-w33p">Lorem ipsum</div>
+//       <div class="rm-w33p rm-inline-block-auto_placeholder"></div>
+//     </div>
+// */
   
-  &_placeholder
-  {
-    visibility: hidden;
-  }
-}
+//   &_placeholder
+//   {
+//     visibility: hidden;
+//   }
+// }

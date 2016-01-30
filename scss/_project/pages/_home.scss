@@ -1,0 +1,141 @@
+/* # Homepage */
+
+@at-root
+{
+	
+	h1{
+	  text-align: center;
+	  text-transform: uppercase;
+	  font-weight: bold;
+	  line-height: 1.2em;
+	  margin-bottom: 27px;
+	  
+	  /*font-size: 70px;
+	  font-family: "Monoton", cursive;
+	  text-transform: uppercase;
+	  font-weight: normal; 
+	  word-spacing: 0.1em;*/
+	}
+
+
+	
+
+	/* Addendum MG 2015/11/08 */
+	.uxr-uxdeiz
+	{
+	  padding: .5em;
+	  background-color: #e84040;
+	  text-align: center;
+	}
+
+
+	.uxr-uxdeiz,
+	.uxr-uxdeiz * 
+	{
+	  color: #fff;
+	}
+
+	.uxr-uxdeiz *
+	{
+	  margin-bottom: 0;
+	}
+
+	.uxr-uxdeiz a 
+	{
+	  text-decoration: none;
+	}
+
+	.uxr-uxdeiz a:focus,
+	.uxr-uxdeiz a:hover,
+	.uxr-uxdeiz a:active
+	{
+	  color: inherit;
+	}
+
+	.uxr-footer_form-label
+	{
+		position:absolute;
+		padding:0;
+		border:0;
+		height:1px;
+		width:1px;
+		overflow:hidden;
+		clip:rect(1px 1px 1px 1px);
+		clip:rect(1px, 1px, 1px, 1px);
+		opacity:0.001;
+	}
+
+	.ie9 .uxr-footer_form-label
+	{
+		position:static;
+		height:auto;
+		width:auto;
+		clip:auto;
+		overflow:visible;
+		opacity:1;
+	}
+
+
+	.mc_embed_signup_scroll label
+	{
+		display: block;
+	}
+
+	.mc_embed_signup_scroll input,
+	.mc_embed_signup_scroll button,
+	.mc_embed_signup_scroll .button
+	{
+		//margin: 13px 0 0;
+	}
+
+	@include mq($until: almost_tablet)
+	{
+		.uxr-uxdeiz span
+		{
+			display: none;
+		}
+
+		.uxr-table
+		{
+			text-align: center;
+			
+			> * + * 
+			{
+				margin-top: smash-size($smash-lh, 'em');
+			}
+		}
+	}
+
+	@include mq(almost_tablet)
+	{	
+		
+		.uxr-table
+		{
+			display: table;
+			width: 100%;
+		}
+		
+		.uxr-table > *
+		{
+			display: table-cell;
+			vertical-align: bottom;
+			
+			input
+			{
+				border-right: 0;
+			}
+		}
+
+		.uxr-table > *:first-child 
+		{
+			width: 75%;
+		}
+
+		.mc_embed_signup_scroll button,
+		.mc_embed_signup_scroll input[type="submit"]
+		{
+			white-space: nowrap;
+			margin-top: 0;
+		}
+	}
+}

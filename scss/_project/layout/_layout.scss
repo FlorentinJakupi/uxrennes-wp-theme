@@ -1,2 +1,14 @@
-/* # Styles spécifiques au layout */
+/* # Layout */
 
+&-layout
+{
+	&-alpha
+	{
+		max-width: 45rem;
+		margin-right: auto;
+		margin-left: auto;
+		
+		padding-right: smash-size(15px);
+		padding-left: smash-size(15px);
+	}
+}

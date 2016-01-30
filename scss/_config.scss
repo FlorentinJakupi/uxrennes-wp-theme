@@ -1,17 +1,5 @@
 /* # Variables globales du projet */
 
-/*
-Suffixées par ` !default`.
-*/
-
-/*
-Ces variables seront utilisées de nombreuses fois, aussi elles portent des noms qui restent compréhensible mais qui sont le plus court possible.
-
-L’unité qui fait référence pour s’entendre avec la partie graphique reste le pixel. Aussi, sur la partie configuration, toutes les variables (sauf exception) doivent être exprimées avec cette unité.
-
-Il est conseillé ensuite de transformer les valeurs en pixels : em, rem ou %. (Par défaut, c’est le em qui est utilisé.) Pour cela des fonctions sont proposées.
-*/
-
 /* # Préfixes des classes générées */
 
 /*
@@ -25,8 +13,8 @@ Ces classes sont ajoutées devant les sélecteurs.
 (Il est possible de sortir de cette encapsulation avec `@at-root{}`.)
 */
 
-$smash-prefix-framework: 'rm' !default;
-$smash-prefix-project:   'rm' !default;
+$smash-prefix-framework: 'uxr' !default;
+$smash-prefix-project:   'uxr' !default;
 $smash-prefix:            $smash-prefix-project !default;
 
 /* # Modèle de boîte */
@@ -48,17 +36,17 @@ $smash-prefered-unit: 'rem' !default;
 /* Il faut penser à configurer la grille et le _plugin_ #grid en fonction des choix réalisés ici (et qui seront propres au projet). */
 
 $mq-breakpoints: (
-    mobile:               320px,
-    phablet:              480px,
-    almost_tablet :       600px,
-    tablet:               768px,
-    desktop:              1024px,
-    wide:                 1300px,
+	mobile:               320px,
+	phablet:              480px,
+	almost_tablet:        640px,
+	tablet:               768px,
+	desktop:              1024px,
+	wide:                 1300px,
 
-    wordpress_admin_bar:  782px
+	wordpress_admin_bar:  782px
 );
 
-//$mq-show-breakpoints: (mobile, phablet, almost_tablet, tablet, desktop, wide);
+$mq-show-breakpoints: (mobile, phablet, almost_tablet, tablet, desktop, wide);
 
 /* # Grille */
 
@@ -70,26 +58,11 @@ $mq-breakpoints: (
  - `$smash-fluid-gutter-fixed` : gouttières des grilles fluides de largeurs fixes (ne fonctionne pas sous IE7-).
 */
 
-/*
-http://gridcalculator.dk/#/936/10/24/0
-*/
-
-/*
-http://fr.wikipedia.org/wiki/Nombre_hautement_compos%C3%A9
-*/
-
 $smash-gutter:              24px !default;
 $smash-col:    $smash-gutter * 3 !default;
 $smash-cols-desktop:          10 !default;
 $smash-external-gutters:   false !default;
 $smash-fluid-gutter-fixed: false !default;
-
-/* # Palette de couleurs */
-
-/* Pour donner un nom aux couleurs : http://chir.ag/projects/name-that-color/ */
-
-$smash-green: #0F0         !default;
-$smash-debug: $smash-green !default;
 
 /* # Typographie */
 
@@ -99,7 +72,12 @@ $smash-debug: $smash-green !default;
 */
 
 $smash-bfs:       16px !default;
+
+// Default project font-size
 $smash-fs0:       18px !default;
+
+$smash-fs-mobile:   $smash-bfs !default;
+$smash-fs-wide:     21px !default;
 
 /*
  - `$smash-ratios` : des ratios basés sur les intervalles musicaux utilisés à différents endroits du projet.
@@ -130,7 +108,7 @@ $smash-ratios:(
  - `$smash-lh` : hauteur de ligne.
 */
 
-$smash-lh: $smash-fs0 + 10 !default;
+$smash-lh: 27px !default;
 
 /* # Échelles typographiques */
 
@@ -145,31 +123,47 @@ $smash-ratio: map-get($smash-ratios, fifth) !default;
 $smash-number1: $smash-fs0 * 1 !default;
 $smash-number2: $smash-fs0 * 2 !default;
 $smash-offset:            0 !default;
+$smash-body:    $smash-fs0 !default;
 
-/* # Déclarations des images spritées */
 
-/* http://pioupioum.fr/compass-sauvez-integrateur/sprites.html */
+/* # Transition */
 
- //$smash-exemple-layout: vertical;
- //$smash-exemple-spacing: 32px;
- 
- //@import 'bg/exemple/*.png';
- 
-/*
+$smash-transition:        .3s !default;
 
-Utilisation dans vos fichiers avec par exemple :
 
- - `@include exemple-sprite(image);` ou
- - `@include exemple-sprite(image, $smash-offset-x:100%);`.
+/* # Palette de couleurs */
+/* Pour donner un nom aux couleurs : http://chir.ag/projects/name-that-color/ */
 
-*/
+$green: 		#0F0    !default;
+$debug: 		$green 	!default;
 
-/* # Variables */
+$black:       	#000    !default;
+$cod-gray: 		#1a1a1a !default;
+$heavy-metal:   #212622 !default;
 
-$white:             #fff    !default;
+$red:         	#e84040 !default;
+$error:       	$red 	!default;
 
-// Transition duration
-$transition:        .3s !default;
+$silver: 		#ccc 	!default;
 
-// Typographic scale
-$smash-body: $smash-fs0 !default;
+$white:       	#fff    !default;
+
+/* # Font-size */
+
+$smash-h1: 		33px !default;
+$smash-h2: 		31px !default;
+$smash-h3: 		30px !default;
+$smash-h4: 		18px !default;
+$smash-h5: 		17px !default;
+$smash-h6: 		16px !default;
+
+$smash-bigger: 	23px !default;
+$smash-big: 	21px !default;
+$smash-small: 	19px !default;
+$smash-smaller: 17px !default;
+
+
+/* # Polices */
+
+$montserrat: 	'montserrat', sans-serif !default;
+$monoton: 		'monoton',    cursive !default;

@@ -6,7 +6,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 
 @mixin smash-clearfix
 {
-	zoom: 1;
+	//zoom: 1;
 	
 	&:before,
 	&:after
@@ -142,10 +142,11 @@ https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-5
 
 /* Joue sur la taille de texte, la marge basse et la hauteur de ligne. */
 
-@mixin smash-typo($smash-fs, $smash-context: $smash-fs0, $smash-unit: $smash-prefered-unit, $smash-margin: true)
+@mixin smash-typo($smash-fs, $smash-unit: $smash-prefered-unit, $smash-context: $smash-fs0, $smash-margin: true)
 {
 	font-size:     smash-size($smash-fs, $smash-unit, $smash-context);
-	line-height:   smash-size(smash-lines($smash-fs) * $smash-lh, $smash-unit, $smash-fs);
+	//line-height:   smash-size(smash-lines($smash-fs) * $smash-lh, $smash-unit, $smash-fs);
+	line-height:   smash-size($smash-fs + 10px, $smash-unit, $smash-fs);
 
 	@if $smash-margin == true 
 	{
@@ -262,7 +263,7 @@ https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-5
 
 /* # Colonnes pour les grilles fluides */
 
-@mixin smash-grid-fluid_col($smash-cols-nb, $smash-cols-offset: null, $smash-cols-context: $smash-cols-desktop, $smash-context: $smash-fs0)
+@mixin smash-grid-fluid-col($smash-cols-nb, $smash-cols-offset: null, $smash-cols-context: $smash-cols-desktop, $smash-context: $smash-fs0)
 {
 	float: left;
 	
@@ -328,3 +329,31 @@ https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-5
 	#{$property}: -webkit-calc(#{$expression}); 
 	#{$property}: calc(#{$expression}); 
 } 
+
+@mixin rm-retina()
+{
+	@media 
+	(-webkit-min-device-pixel-ratio: 2), 
+	(min-resolution: 192dpi) { 
+	    /* Retina-specific stuff here */
+	    @content;
+	}
+}
+
+/* # Vertical media queries */
+
+@mixin smash-mq-max-height($viewport_height: $mq-desktop-max-height, $smash-contexte: $smash-fs0, $smash-unit: $smash-prefered-unit)
+{
+	@media (max-height: smash-size($viewport_height, 'em', $smash-bfs) - .01em ) 
+	{
+		@content;
+	}
+}
+
+@mixin smash-mq-min-height($viewport_height: $mq-desktop-max-height, $smash-contexte: $smash-fs0, $smash-unit: $smash-prefered-unit)
+{
+	@media (min-height: smash-size($viewport_height, 'em', $smash-bfs) ) 
+	{
+		@content;
+	}
+}

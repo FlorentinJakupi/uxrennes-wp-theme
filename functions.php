@@ -12,7 +12,7 @@
  */
 if ( defined('UXR_ENV') && UXR_ENV === 'DEV' ){
 
-	//add_action('wp_head', 'show_template');
+	add_action('wp_head', 'show_template');
 	function show_template() {
 
 		if (current_user_can('activate_plugins')) :
@@ -183,6 +183,41 @@ function uxr_add_main_stylesheet_conditional( $tag, $handle ) {
  */
 require get_template_directory() . '/inc/template-tags.php';
 
+/**
+ * Import custom post types
+ */
+require get_template_directory() . '/inc/cpt-events.php';
+
+/**
+ * Disable emojis
+ */
+function disable_emojis() {
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+
+	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+}
+add_action( 'init', 'disable_emojis' );
+
+/**
+ * Filter function used to remove tinymce emoji plugin.
+ * 
+ * @param    array  $plugins  
+ * @return   array             Difference betwen the two arrays
+ */
+function disable_emojis_tinymce( $plugins ) {
+	if ( is_array( $plugins ) ) {
+		return array_diff( $plugins, array( 'wpemoji' ) );
+	} else {
+		return array();
+	}
+}
+
 
 /**
  * Remove the recent comments widget styles from wp_head
@@ -229,15 +264,46 @@ function uxr_gallery_atts( $out, $pairs, $atts ) {
 	return $out;
 
 }
-
+ 
+ 
 /**
  * @subsection Sanitize Uploads Name to Prevent 404
- * @link https://gist.github.com/herewithme/7704370
+ * @link https://wpchannel.com/renommer-automatiquement-fichiers-accentues-wordpress/
  */
-add_filter( 'sanitize_file_name', 'remove_accents', 10, 1 );
-add_filter( 'sanitize_file_name_chars', 'sanitize_file_name_chars', 10, 1 );
+add_filter('sanitize_file_name', 'wpc_sanitize_french_chars', 10);
  
-function sanitize_file_name_chars( $special_chars = array() ) {
-	$special_chars = array_merge( array( '’', '‘', '“', '”', '"', '«', '»', '‹', '›', '—', 'æ', 'Æ', 'E', 'œ', 'Œ', '€', 'ç', 'à', 'À', 'ä', 'Ä', 'é', 'É', 'è', 'È', 'ë', 'Ë', 'ö', 'Ö', 'ù', 'ü', 'Ü' ), $special_chars );
-	return $special_chars;
+function wpc_sanitize_french_chars($filename) {
+     
+    // Force the file name in UTF-8 (encoding Windows / Mac / Linux)
+    $filemane = mb_convert_encoding($filename, "UTF-8");
+ 
+    $char_not_clean = array('/@/','/À/','/Á/','/Â/','/Ã/','/Ä/','/Å/','/Ç/','/È/','/É/','/Ê/','/Ë/','/Ì/','/Í/','/Î/','/Ï/','/Ò/','/Ó/','/Ô/','/Õ/','/Ö/','/Ù/','/Ú/','/Û/','/Ü/','/Ý/','/à/','/á/','/â/','/ã/','/ä/','/å/','/ç/','/è/','/é/','/ê/','/ë/','/ì/','/í/','/î/','/ï/','/ð/','/ò/','/ó/','/ô/','/õ/','/ö/','/ù/','/ú/','/û/','/ü/','/ý/','/ÿ/', '/©/');
+    $clean = array('a','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','u','u','u','u','y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y','copy');
+ 
+    $friendly_filename = preg_replace($char_not_clean, $clean, $filename);
+ 
+    // After replacement, we destroy the last residues
+    $friendly_filename = utf8_decode($friendly_filename);
+    $friendly_filename = preg_replace('/\?/', '', $friendly_filename);
+ 
+    // Lowercase
+    $friendly_filename = strtolower($friendly_filename);
+ 
+    return $friendly_filename;
 }
+
+
+/**
+ * Non-breakable spaces
+ */
+function nonBreakableSpaces($text)  
+{  
+	$dirtyspaces	= array(' :', ' ;', '« ', ' »', ' !', ' ?', 'Aleks Crément', ' euros');
+	$cleanspaces	= array('&nbsp;:', '&nbsp;;', '«&nbsp;', '&nbsp;»', '&nbsp;!', '&nbsp;?', 'Aleks&nbsp;Crément', '&nbsp;euros');
+	$output = str_replace($dirtyspaces, $cleanspaces, $text);
+	
+	return $output;
+}  
+add_filter('the_content', 'nonBreakableSpaces', 15);
+add_filter('the_title', 'nonBreakableSpaces', 15);
+add_filter('comment_text', 'nonBreakableSpaces', 30);	// commentaires

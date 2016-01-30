@@ -2,90 +2,168 @@
 
 @at-root 
 {
-
-	//
-	// Generic form styles
-	//
-
-	input,
-	textarea,
-	button,
-	select
+	form 
 	{
-		@include border-radius(0);
-	}
-	
-	input,
-	textarea
-	{
-		@include input-placeholder
+		p 
 		{
-			// This won't work on inpyt[type="number"] in Firefox
-			// cf. https://bugzilla.mozilla.org/show_bug.cgi?id=1004130
-			@include opacity(1);
+			margin-bottom: smash-size($smash-lh/2, 'em');
 		}
+	}
 
+
+	/**
+	 * LABEL
+	 */
+
+	label
+	{
+		display: block;
+	}
+
+
+	/**
+	 * FIELDS
+	 */
+
+	input,
+	select,
+	textarea,
+	button
+	{
+		padding-top: 0;
+		padding-bottom: 0;
+		@include border-radius(0);
+		border: 1px solid;
+		transition: border $smash-transition, color $smash-transition;
+
+		// Do not remove outline unless you replace it
+		// with something else. It's *very* important 
+		// for accessibility.
 		&:focus,	
 		&:active 
 		{
-			@include input-placeholder
-			{
-				// This won't work on inpyt[type="number"] in Firefox
-				// cf. https://bugzilla.mozilla.org/show_bug.cgi?id=1004130
-				font-weight: bold;
-			}
+			outline: none;
+		}
+		//
+		// A11y is love ♥︎
+		//
+	}
+
+	input,
+	select,
+	textarea
+	{
+		@include inline-block(top);
+		width: 100%;
+		max-width: 100%;
+		@include transition(color .2s ease-in);
+		border: 1px solid $silver;
+		background-color: $white;
+		color: $black;
+		padding-left: smash-size($smash-gutter, 'em');
+		
+		@include transition(border-color $smash-transition);
+		
+		&:focus,
+		&:active
+		{
+			border-color: $black;
+		}
+	}
+
+	input,
+	textarea
+	{
+		padding-right: smash-size($smash-gutter, 'em');
+		
+		@include input-placeholder
+		{
+			color: rgba($black, .7);
 		}
 
-		// Webkit autofill background-color
-		&:-webkit-autofill
+		&:focus
 		{
-			-webkit-box-shadow: 0 0 0px 1000px white inset;
-			-webkit-text-fill-color: black;
+			
 		}
+	}
+
+	input,
+	select 
+	{
+		height: smash-size($smash-lh*2);
 	}
 
 	input[type="radio"],
 	input[type="checkbox"]
 	{
-		padding: 0 !important; // we'll never use padding on these two
+		width: auto;
+		height: auto;
+		line-height: auto;
+		background-image: none;
+		padding: 0;
 	}
 
+	// Webkit autofill background-color
+	input:-webkit-autofill
+	{
+		-webkit-box-shadow: 0 0 0px 1000px $white inset;
+	}
+
+
+
+
+	/**
+	 * TEXTAREA
+	 */
+
+	textarea
+	{
+		height: smash-size($smash-lh*6);
+	}
+
+
+	/**
+	 * SELECT
+	 */
 	select 
 	{
-		line-height: normal;
-	}
-
-	/* Remove IE9 and IE10 image cross that appears when focusing inputs */
-	input::-ms-clear
-	{
-		display: none;
-	}
-
-	// IE9 line-height fix
-	input 
-	{
-		.ie9 &
-		{
-			line-height: normal !important;
-		}
+		padding-right: 0;
 	}
 
 	/**
 	 * SUBMIT
 	 */
-	button 
+	button,
+	input[type="submit"],
+	%-btn
 	{
-		padding: 0;
-		background: none;
-		color: inherit;
-		font: inherit;
-		line-height: inherit;
-		border: 0;	
+		position: relative;
+		@include inline-block(top);
+		width: auto !important;
+		height: smash-size( $smash-lh*2 );
+		padding-right: smash-size($smash-gutter, 'em');
+		padding-left: smash-size($smash-gutter, 'em');
+		line-height: 1;
+		border: 0;
+		
+		background-color: $heavy-metal;
+		color: $white;
+		font-weight: bold;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		@include transition(background-color $smash-transition ease-out);
 		@include appearance(none);
-
-		img 
+		
+		&:focus,
+		&:active
 		{
-			display: block;
+			background-color: $black;
 		}
-	}
+	}	
+}
+
+&-form
+{
+	
 }
