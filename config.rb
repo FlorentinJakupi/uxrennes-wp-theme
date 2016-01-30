@@ -17,7 +17,7 @@ Sass::Script::Number.precision = 8
 
 # Set the project's environment
   environment = :production
- #environment = :development
+  #environment = :development
 
 if  environment == :production
     output_style = :compressed
@@ -66,7 +66,7 @@ end
 require 'sass-globbing'
 
 # Load Compass Growl
-#begin
+# begin
 #    require "compass-growl"
-#rescue LoadError
-#end
+# rescue LoadError
+# end

@@ -1,13 +1,15 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Project-Id-Version: UX Rennes\n"
-"POT-Creation-Date: 2016-01-30 15:34+0100\n"
-"PO-Revision-Date: 2016-01-30 15:37+0100\n"
+"POT-Creation-Date: 2016-01-30 16:44+0100\n"
+"PO-Revision-Date: 2016-01-30 16:45+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -15,8 +17,6 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Last-Translator: \n"
-"Language: fr_FR\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -126,7 +126,7 @@ msgstr "Aucun évènement trouvé"
 msgid "No event found in trash"
 msgstr "Aucun évènement trouvé dans la corbeille"
 
-#: inc/cpt-events.php:33 inc/cpt-events.php:53
+#: inc/cpt-events.php:33 inc/cpt-events.php:40
 msgid "events"
 msgstr "evenements"
 
@@ -137,6 +137,10 @@ msgstr "Types d’événements"
 #: inc/cpt-events.php:49
 msgid "Event type"
 msgstr "Type d’événement"
+
+#: inc/cpt-events.php:53
+msgid "events/type"
+msgstr "evenements/type"
 
 #: inc/template-tags.php:28
 #, php-format
@@ -186,6 +190,11 @@ msgstr "Modifier %s"
 msgid "Search Results for: %s"
 msgstr "Résultats de recherche pour : %s"
 
+#: template-parts/content-events.php:34 template-parts/content-page.php:21
+#: template-parts/content-single.php:25 template-parts/content.php:34
+msgid "Pages:"
+msgstr "Pages :"
+
 #: template-parts/content-none.php:14
 msgid "Nothing Found"
 msgstr "Aucun résultat"
@@ -212,11 +221,6 @@ msgid ""
 msgstr ""
 "Rien n’existe à cette adresse. Mais une recherche pourrait peut-être vous "
 "aider à retrouver votre chemin :"
-
-#: template-parts/content-page.php:21 template-parts/content-single.php:25
-#: template-parts/content.php:34
-msgid "Pages:"
-msgstr "Pages :"
 
 #: template-parts/content.php:27
 #, php-format

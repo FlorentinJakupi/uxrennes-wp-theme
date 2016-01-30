@@ -52,6 +52,12 @@ a
 	text-decoration: none;
 	@include background-image(linear-gradient(rgba(#000,0) 94%, rgba($red,1) 100%));
 	
+	// Please note: only remove the focus if you DO
+	// provide a visual alternative.
+	//outline: none;
+	// Never remove outline without providing an alternative!
+	// A11y is love ♥︎
+		
 	&:hover,
 	&:focus
 	{

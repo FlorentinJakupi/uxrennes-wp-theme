@@ -4,6 +4,7 @@
 {
 	background-color: $black;
 	color: $white;	
+
 	
 	a 
 	{
@@ -16,6 +17,44 @@
 		}
 	}
 
+	input,
+	select,
+	textarea
+	{
+		&,
+		&:focus,
+		&:active
+		{
+			border-color: $white;
+		}
+	}
+
+	input
+	{
+		&:focus,
+		&:active
+		{
+			@include input-placeholder
+			{
+				color: rgba($black, .9);
+			}
+		}
+	}
+
+	button,
+	input[type="button"],
+	input[type="submit"]
+	{
+		background-color: $red;
+		white-space: nowrap;
+		
+		&:focus,
+		&:active 
+		{
+			background-color: darken($red, 6);
+		}
+	}
+
 	&_form-label
 	{
 		@include smash-visually-hidden();
@@ -24,6 +63,12 @@
 		{
 			@include smash-visually-visible();
 		}
+	}
+
+	.#{$smash-prefix}-big
+	{
+		text-align: left;
+		font-weight: bold;
 	}
 
 	.#{$smash-prefix}-grid-container

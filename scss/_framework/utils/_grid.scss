@@ -11,25 +11,31 @@
   </div>
 */
 
-  &-container
-  {
-	margin-left:  auto;
-	margin-right: auto;
-	
-	@if $smash-external-gutters
+	&-container
 	{
-	  padding: 0 smash-size($smash-gutter);
+		margin-left:  auto;
+		margin-right: auto;
+
+		@if $smash-external-gutters
+		{
+		  padding: 0 smash-size($smash-gutter);
+		}
+
+		max-width: smash-size(smash-grid-cols-width($smash-cols-desktop));
+
+		@if $smash-external-gutters and $smash-box-sizing
+		{
+		  width: smash-size(smash-grid-cols-width($smash-cols-desktop) + $smash-gutter * 2);
+		  padding-left:  0;
+		  padding-right: 0;
+		}
+
+		@include mq($until: desktop)
+		{
+			padding-right: smash-size($smash-gutter);
+			padding-left: smash-size($smash-gutter);
+		}
 	}
-	
-	width: smash-size(smash-grid-cols-width($smash-cols-desktop));
-	
-	@if $smash-external-gutters and $smash-box-sizing
-	{
-	  width: smash-size(smash-grid-cols-width($smash-cols-desktop) + $smash-gutter * 2);
-	  padding-left:  0;
-	  padding-right: 0;
-	}
-  }
 
 /* # Utilitaires */
 

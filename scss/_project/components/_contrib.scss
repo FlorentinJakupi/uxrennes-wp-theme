@@ -289,6 +289,11 @@
 &-contrib
 {
 	@extend %uxr-contrib;
+	
+	> *:last-child
+	{
+		margin-bottom: 0;
+	}
 }
 
 &-asset
@@ -317,6 +322,11 @@
 			
 			$width: (1280 - (1280 - 940) / 2) * 100 / 1280;
 			@include smash-calc('width', '#{$width} * 1%');
+		}
+
+		+ .#{$smash-prefix}-grid-container
+		{
+			margin-top: smash-size($smash-lh*2, 'em');
 		}
 	}
 }

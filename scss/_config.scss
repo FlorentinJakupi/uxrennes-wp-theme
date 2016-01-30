@@ -46,7 +46,7 @@ $mq-breakpoints: (
 	wordpress_admin_bar:  782px
 );
 
-$mq-show-breakpoints: (mobile, phablet, almost_tablet, tablet, desktop, wide);
+//$mq-show-breakpoints: (mobile, phablet, almost_tablet, tablet, desktop, wide);
 
 /* # Grille */
 
@@ -58,9 +58,9 @@ $mq-show-breakpoints: (mobile, phablet, almost_tablet, tablet, desktop, wide);
  - `$smash-fluid-gutter-fixed` : gouttières des grilles fluides de largeurs fixes (ne fonctionne pas sous IE7-).
 */
 
-$smash-gutter:              24px !default;
+$smash-gutter:              20px !default;
 $smash-col:    $smash-gutter * 3 !default;
-$smash-cols-desktop:          10 !default;
+$smash-cols-desktop:          12 !default;
 $smash-external-gutters:   false !default;
 $smash-fluid-gutter-fixed: false !default;
 

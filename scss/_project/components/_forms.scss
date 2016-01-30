@@ -36,17 +36,15 @@
 		border: 1px solid;
 		transition: border $smash-transition, color $smash-transition;
 
-		// Do not remove outline unless you replace it
-		// with something else. It's *very* important 
-		// for accessibility.
+		// Please note: only remove the focus if you DO
+		// provide a visual alternative.
 		&:focus,	
 		&:active 
 		{
 			outline: none;
 		}
-		//
+		// Never remove outline without providing an alternative!
 		// A11y is love ♥︎
-		//
 	}
 
 	input,
@@ -76,10 +74,7 @@
 	{
 		padding-right: smash-size($smash-gutter, 'em');
 		
-		@include input-placeholder
-		{
-			color: rgba($black, .7);
-		}
+		
 
 		&:focus
 		{
@@ -91,6 +86,15 @@
 	select 
 	{
 		height: smash-size($smash-lh*2);
+	}
+
+	input
+	{
+		@include input-placeholder
+		{
+			color: rgba($black, .6);
+			@include transition(color $smash-transition);
+		}
 	}
 
 	input[type="radio"],

@@ -3,19 +3,19 @@
 @at-root
 {
 	
-	h1{
-	  text-align: center;
-	  text-transform: uppercase;
-	  font-weight: bold;
-	  line-height: 1.2em;
-	  margin-bottom: 27px;
+	// h1{
+	//   text-align: center;
+	//   text-transform: uppercase;
+	//   font-weight: bold;
+	//   line-height: 1.2em;
+	//   margin-bottom: 27px;
 	  
 	  /*font-size: 70px;
 	  font-family: "Monoton", cursive;
 	  text-transform: uppercase;
 	  font-weight: normal; 
 	  word-spacing: 0.1em;*/
-	}
+	//}
 
 
 	
@@ -96,9 +96,7 @@
 		}
 
 		.uxr-table
-		{
-			text-align: center;
-			
+		{	
 			> * + * 
 			{
 				margin-top: smash-size($smash-lh, 'em');

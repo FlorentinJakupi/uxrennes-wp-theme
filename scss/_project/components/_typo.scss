@@ -140,8 +140,6 @@
 	{
 		max-width: smash-size(700px);
 		letter-spacing: 0.008em;
-		
-		
 		line-height: 1.2;
 		
 		@include mq($until: desktop)
@@ -153,12 +151,16 @@
 		
 		@include mq(desktop)
 		{
-			font-size: smash-size(50px, 'em');
+			@include smash-typo(50px, 'em');
 		}
 	}
 
 	&-gamma 
 	{
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		
 		@include mq($until: almost_tablet)
 		{
 			@include smash-typo($smash-big, 'em');

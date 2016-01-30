@@ -9,10 +9,13 @@
  * @package uxrennes-theme
  */
 
+$html_class = ' uxr-layout-full';
+$body_class = ' uxr-layout-full';
+
 ?><!DOCTYPE html>
-<!--[if lt IE 9]>      <html class="no-js ie8" <?php language_attributes(); ?>><![endif]-->
-<!--[if IE 9]>         <html class="no-js ie9" <?php language_attributes(); ?>><![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
+<!--[if lt IE 9]>      <html class="no-js ie8<?php if (isset($html_class) && !empty($html_class)) echo $html_class; ?>" <?php language_attributes(); ?>><![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9<?php if (isset($html_class) && !empty($html_class)) echo $html_class; ?>" <?php language_attributes(); ?>><![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js<?php if (isset($html_class) && !empty($html_class)) echo $html_class; ?>" <?php language_attributes(); ?>><!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,7 +46,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body <?php body_class(); ?>>
+	<body <?php body_class($body_class); ?>>
 		
 		<!--[if lte IE 8]>
 		<div id="no-ie8">
@@ -51,14 +54,11 @@
 		</div>
 		<![endif]-->
 
+		<div id="page" class="hfeed site uxr-layout-full_container">
 
-		<?php if (is_home() || is_front_page()) : ?>
-		<div class="uxr-uxdeiz">
-			<p><a href="/uxdeiz-1">Découvrez <span>notre évènement </span>UX Deiz #1 →</a></p>
-		</div>
-		<?php endif; ?>
-
-		<div id="page" class="hfeed site">
+			<?php if (is_home() || is_front_page()) : 
+				get_template_part('template-parts/header', 'latest-event');
+			endif; ?>
 
 			<?php /*
 			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'uxrennes-theme' ); ?></a>
@@ -80,4 +80,4 @@
 			</header>
 			*/ ?>
 
-			<div id="content" class="site-content">
+			<div id="content" class="site-content uxr-layout-full_row uxr-layout-full_row-content">

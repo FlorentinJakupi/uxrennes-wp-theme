@@ -50,7 +50,7 @@ function register_events(){
 			'query_var'             => true,
 			'rewrite'               => true,
 			'show_tagcloud'			=> false,
-			'rewrite'				=> array('slug' => __('events', 'uxrennes-theme')),
+			'rewrite'				=> array('slug' => __('events/type', 'uxrennes-theme')),
 			'show_in_nav_menus'		=> false // on ne veut pas l'afficher comme option de menu
 		)
 	);
@@ -60,20 +60,20 @@ function register_events(){
 	// add_filter('post_link', 'type_permalink', 10, 3);
 	// add_filter('post_type_link', 'type_permalink', 10, 3);
 	
-	// function type_permalink($permalink, $post_id, $leavename) {
+	function type_permalink($permalink, $post_id, $leavename) {
 	
-	// 	if (strpos($permalink, '%event_type%') === FALSE) return $permalink;
+		if (strpos($permalink, '%event_type%') === FALSE) return $permalink;
 		
-	// 	// Get post
-	// 	$post = get_post($post_id);
-	// 	if (!$post) return $permalink;
+		// Get post
+		$post = get_post($post_id);
+		if (!$post) return $permalink;
 		
-	// 	// Get taxonomy terms
-	// 	$terms = wp_get_object_terms($post->ID, 'event_type');
-	// 	if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
-	// 	else $taxonomy_slug = 'no-type';
-	// 	return str_replace('%event_type%', $taxonomy_slug, $permalink);
-	// }
+		// Get taxonomy terms
+		$terms = wp_get_object_terms($post->ID, 'event_type');
+		if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
+		else $taxonomy_slug = 'no-type';
+		return str_replace('%event_type%', $taxonomy_slug, $permalink);
+	}
 	
 	register_post_type('events',$args);
 	flush_rewrite_rules();
