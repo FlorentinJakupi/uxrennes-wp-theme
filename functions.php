@@ -8,6 +8,18 @@
  */
 
 /**
+ * Import ACF settings
+ * /!\ Disable on dev environment.
+ * /!\ Enable on preprod and prod environments.
+ */
+ 
+if ( defined('UXR_ENV') && (UXR_ENV === 'PROD' || UXR_ENV === 'PREPROD') ) {
+ 
+	// Only call the ACF export in production.
+	include_once( get_template_directory() . '/inc/acf-export.php' );
+}
+
+/**
  * Display the name of the template in use to display the current page
  */
 if ( defined('UXR_ENV') && UXR_ENV === 'DEV' ){
