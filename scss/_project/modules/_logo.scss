@@ -8,12 +8,12 @@
 	  	margin-right: auto;
 	  	margin-left: auto;
 
-		@include mq($until: almost_tablet)
+		@include mq($until: tablet)
 		{
 			margin-bottom: smash-size($smash-lh, 'em');
 		}
 
-		@include mq(almost_tablet)
+		@include mq(tablet)
 		{	
 			margin-bottom: smash-size($smash-lh*2, 'em');
 		}

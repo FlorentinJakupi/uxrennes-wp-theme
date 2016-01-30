@@ -57,13 +57,13 @@
 			margin-bottom: 0;
 		}
 
-		@include mq($until: almost_tablet)
+		@include mq($until: tablet)
 		{
 			margin-top: smash-size($smash-lh, 'em');
 			margin-bottom: smash-size($smash-lh, 'em');
 		}
 
-		@include mq(almost_tablet)
+		@include mq(tablet)
 		{	
 			margin-top: smash-size($smash-lh*2, 'em');
 			margin-bottom: smash-size($smash-lh*2, 'em');

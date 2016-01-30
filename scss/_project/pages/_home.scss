@@ -21,38 +21,43 @@
 	
 
 	/* Addendum MG 2015/11/08 */
-	.uxr-uxdeiz
+	.#{$smash-prefix}-uxdeiz
 	{
 	  padding: .5em;
 	  background-color: #e84040;
 	  text-align: center;
+	  
+	  a 
+	  {
+		background: none;
+	  }
 	}
 
 
-	.uxr-uxdeiz,
-	.uxr-uxdeiz * 
+	.#{$smash-prefix}-uxdeiz,
+	.#{$smash-prefix}-uxdeiz * 
 	{
 	  color: #fff;
 	}
 
-	.uxr-uxdeiz *
+	.#{$smash-prefix}-uxdeiz *
 	{
 	  margin-bottom: 0;
 	}
 
-	.uxr-uxdeiz a 
+	.#{$smash-prefix}-uxdeiz a 
 	{
 	  text-decoration: none;
 	}
 
-	.uxr-uxdeiz a:focus,
-	.uxr-uxdeiz a:hover,
-	.uxr-uxdeiz a:active
+	.#{$smash-prefix}-uxdeiz a:focus,
+	.#{$smash-prefix}-uxdeiz a:hover,
+	.#{$smash-prefix}-uxdeiz a:active
 	{
 	  color: inherit;
 	}
 
-	.uxr-footer_form-label
+	.#{$smash-prefix}-footer_form-label
 	{
 		@include smash-visually-hidden();
 	}
@@ -71,12 +76,17 @@
 
 	@include mq($until: almost_tablet)
 	{
-		.uxr-uxdeiz span
+		.#{$smash-prefix}-big
+		{
+			margin-top: smash-size($smash-lh/2, 'em', $smash-big);
+		}
+
+		.#{$smash-prefix}-uxdeiz span
 		{
 			display: none;
 		}
 
-		.uxr-table
+		.#{$smash-prefix}-table
 		{	
 			> * + * 
 			{
@@ -88,13 +98,13 @@
 	@include mq(almost_tablet)
 	{	
 		
-		.uxr-table
+		.#{$smash-prefix}-table
 		{
 			display: table;
 			width: 100%;
 		}
 		
-		.uxr-table > *
+		.#{$smash-prefix}-table > *
 		{
 			display: table-cell;
 			vertical-align: bottom;
@@ -105,7 +115,7 @@
 			}
 		}
 
-		.uxr-table > *:first-child 
+		.#{$smash-prefix}-table > *:first-child 
 		{
 			width: 75%;
 		}

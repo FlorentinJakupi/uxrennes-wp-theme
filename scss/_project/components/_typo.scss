@@ -163,7 +163,8 @@
 		
 		@include mq($until: almost_tablet)
 		{
-			@include smash-typo($smash-big, 'em');
+			@include smash-typo($smash-big, 'em', $smash-margin: false);
+			margin-bottom: smash-size($smash-lh/2, 'em', $smash-big);
 		}
 
 		@include mq(almost_tablet)
