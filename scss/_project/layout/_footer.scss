@@ -59,10 +59,10 @@
 	{
 		@include smash-visually-hidden();
 		
-		.ie9 &
-		{
-			@include smash-visually-visible();
-		}
+		// .ie9 &
+		// {
+		// 	@include smash-visually-visible();
+		// }
 	}
 
 	.#{$smash-prefix}-big

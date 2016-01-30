@@ -12,7 +12,7 @@
  */
 if ( defined('UXR_ENV') && UXR_ENV === 'DEV' ){
 
-	add_action('wp_head', 'show_template');
+	//add_action('wp_head', 'show_template');
 	function show_template() {
 
 		if (current_user_can('activate_plugins')) :
@@ -143,6 +143,11 @@ function uxr_scripts() {
 
 	$last_update_js 		= filemtime( get_stylesheet_directory() . '/assets/js/scripts.js' );
 	wp_enqueue_script( 'uxr-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), $last_update_js, true );
+
+	// Load the Gravity Forms placeholder polyfill for IE9
+    wp_register_script( 'placeholders-polyfill', get_template_directory_uri() . '/assets/components/placeholders-polyfill/placeholders.jquery.min.js', array('jquery'), '3.0.2' );
+    wp_script_add_data( 'placeholders-polyfill', 'conditional', 'IE 9' );
+    wp_enqueue_script(  'placeholders-polyfill' );
 
 	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 	// 	wp_enqueue_script( 'comment-reply' );

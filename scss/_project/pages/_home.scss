@@ -54,27 +54,8 @@
 
 	.uxr-footer_form-label
 	{
-		position:absolute;
-		padding:0;
-		border:0;
-		height:1px;
-		width:1px;
-		overflow:hidden;
-		clip:rect(1px 1px 1px 1px);
-		clip:rect(1px, 1px, 1px, 1px);
-		opacity:0.001;
+		@include smash-visually-hidden();
 	}
-
-	.ie9 .uxr-footer_form-label
-	{
-		position:static;
-		height:auto;
-		width:auto;
-		clip:auto;
-		overflow:visible;
-		opacity:1;
-	}
-
 
 	.mc_embed_signup_scroll label
 	{

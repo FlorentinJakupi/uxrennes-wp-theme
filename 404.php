@@ -7,7 +7,7 @@
  * @package uxrennes-theme
  */
 
-get_header(); ?>
+/*get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -42,7 +42,6 @@ get_header(); ?>
 					<?php endif; ?>
 
 					<?php
-						/* translators: %1$s: smiley */
 						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'uxrennes-theme' ), convert_smilies( ':)' ) ) . '</p>';
 						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 					?>
@@ -55,4 +54,4 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php get_footer(); */ ?>
