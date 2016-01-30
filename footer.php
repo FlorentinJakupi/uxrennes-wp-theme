@@ -6,23 +6,23 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package uxrennes
+ * @package uxrennes-theme
  */
 
 ?>
 
-	</div><!-- #content -->
+			</div>
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'uxrennes' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'uxrennes' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'uxrennes' ), 'uxrennes', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+			<footer id="colophon" class="site-footer" role="contentinfo">
+				<div class="site-info">
+					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'uxrennes-theme' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'uxrennes-theme' ), 'WordPress' ); ?></a>
+					<span class="sep"> | </span>
+					<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'uxrennes-theme' ), 'uxrennes-theme', '<a href="http://residence-mixte.com" rel="designer">Résidence Mixte</a>' ); ?>
+				</div>
+			</footer>
+		</div>
 
-<?php wp_footer(); ?>
+		<?php wp_footer(); ?>
 
-</body>
+	</body>
 </html>
