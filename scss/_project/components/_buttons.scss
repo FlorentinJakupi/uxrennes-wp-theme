@@ -1,0 +1,42 @@
+/* # Boutons */
+
+/* # États */
+
+&-button,
+&-btn
+{
+	&:hover,
+	&:focus
+	{
+		
+	}
+	&:active
+	{
+		
+	}
+	&[disabled]
+	{
+		
+	}
+}
+
+/*
+		<button class="xx-btn">Lorem ipsum</button>
+*/
+
+@at-root 
+{
+	button 
+	{
+		background: none;
+		color: inherit;
+		font: inherit;
+		line-height: inherit;
+		border: 0;	
+	}
+
+	#infinite-handle
+	{
+		text-align: center;
+	}
+}

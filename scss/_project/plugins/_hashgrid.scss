@@ -1,0 +1,141 @@
+/* # #grid */
+
+// #grid
+// {
+
+// 	/*
+// 	Le conteneur est positionné par dessus le contenu. Sa hauteur sera caclulée en JS.
+// 	*/
+
+// 	overflow: hidden;
+// 	position: absolute;
+// 	left:  0;
+// 	right: 0;
+// 	top:   0;
+
+// 	/*
+// 	La grille horizontale est gérée via des `gradients`.
+// 	*/
+
+// 	background-image: linear-gradient(transparent calc(100% - 1px), transparentize($smash-debug, 0.5) 100%);
+// 	background-repeat: repeat;
+	
+// 	background-position: 0 0, 0 smash-size($smash-lh / 2, 'em');
+// 	background-size: 100px smash-size($smash-lh, 'em'), 100px smash-size($smash-lh, 'em');
+
+
+// 	.horiz
+// 	{
+// 		height: smash-size($smash-lh);
+// 	}
+
+// 	/*
+// 	La grille verticale est gérée via des `backgrounds`.
+// 	*/
+
+// 	.vert-container
+// 	{
+// 		left: 50%;
+		
+// 		@include mq($until: tablet)
+// 		{
+// 			display: none
+// 		}
+		
+// 		@include mq(tablet, desktop)
+// 		{
+// 			$grid-width-tablet: smash-size(smash-grid-cols-width($smash-cols-tablet) + ($smash-gutter * 2));
+
+// 			width:       $grid-width-tablet !important;
+// 			margin-left: $grid-width-tablet / -2;
+// 		}
+		
+// 		@include mq(desktop, wide)
+// 		{
+// 			$grid-width-desktop: smash-size(smash-grid-cols-width($smash-cols-desktop) + ($smash-gutter * 2));
+
+// 			width:       $grid-width-desktop !important;
+// 			margin-left: $grid-width-desktop / -2;
+// 		}
+
+// 		@include mq(wide)
+// 		{
+// 			$grid-width-wide: smash-size(smash-grid-cols-width($smash-cols-wide) + ($smash-gutter * 2));
+
+// 			width:       $grid-width-wide !important;
+// 			margin-left: $grid-width-wide / -2;
+// 		}
+// 	}
+// 	.vert
+// 	{
+// 		width:       smash-size($smash-col);
+// 		margin-left: smash-size($smash-gutter);
+		
+// 		background-color: transparentize(blueviolet, 0.85);
+// 	}
+
+// 	/* # La grille horizontale simple */
+
+// 	/*
+// 	On masque la grille verticale.
+// 	*/
+
+// 	&.grid-1
+// 	{
+// 		.vert
+// 		{
+// 			background-color: transparent;
+// 		}
+// 	}
+
+// 	/* # La grille horizontale double */
+
+// 	/*
+// 	On masque la grille verticale et on passe un double `gradient`.
+// 	*/
+
+// 	&.grid-2
+// 	{
+// 		background-image: linear-gradient(transparent calc(100% - 1px), transparentize($smash-debug, 0.5) 100%),
+// 		linear-gradient(transparent calc(100% - 1px), transparentize(white, 0.8) 100%);
+
+// 		.vert
+// 		{
+// 			background-color: transparent;
+// 		}
+// 	}
+
+// 	/* # La grille verticale */
+
+// 	/*
+// 	On masque la grille horizontale.
+// 	*/
+
+// 	&.grid-3
+// 	{
+// 		background-image: none;
+// 	}
+
+// 	/* # Toutes les grilles */
+
+// 	/*
+// 	On passe un double `gradient`.
+// 	*/
+
+// 	&.grid-4
+// 	{
+// 		background-image: linear-gradient(transparent calc(100% - 1px), transparentize($smash-debug, 0.5) 100%),
+// 		linear-gradient(transparent calc(100% - 1px), transparentize(white, 0.8) 100%);
+// 	}
+
+// 	/* # La grille horizontale simple et la grille verticale */
+
+// 	/*
+// 	Cas par défaut.
+// 	*/
+
+// 	&.grid-5
+// 	{
+
+// 	}
+// }

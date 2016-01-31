@@ -1,0 +1,177 @@
+/* # Grille verticale */
+
+&-grid
+{
+
+/* # Conteneur principal */
+
+/*
+  <div class="rm-grid-container">
+	<p>Lorem ipsum dolor</p>
+  </div>
+*/
+
+	&-container
+	{
+		margin-left:  auto;
+		margin-right: auto;
+
+		@if $smash-external-gutters
+		{
+		  padding: 0 smash-size($smash-gutter);
+		}
+
+		max-width: smash-size(smash-grid-cols-width($smash-cols-desktop));
+
+		@if $smash-external-gutters and $smash-box-sizing
+		{
+		  width: smash-size(smash-grid-cols-width($smash-cols-desktop) + $smash-gutter * 2);
+		  padding-left:  0;
+		  padding-right: 0;
+		}
+
+		@include mq($until: desktop)
+		{
+			padding-right: smash-size($smash-gutter);
+			padding-left: smash-size($smash-gutter);
+		}
+	}
+
+/* # Utilitaires */
+
+/*
+ - `.rm-grid_col` : demi-gouttières extenes (qui par adjacences deviennent gouttières pleines) ;
+ - `.rm-grid_inside` : demi-gouttières internes (qui par adjacences deviennent gouttières pleines) ;
+ - `.rm-grid_adjust` : marges négatives pour annuler les demi-gouttières externes.
+*/
+
+/*
+	<div class="rm-grid rm-grid_adjust">
+	  <div class="rm-grid_col">Lorem ipsum</div>
+	  <div class="rm-grid_col">Lorem ipsum</div>
+	</div>
+*/
+
+  &_inside
+  {
+	padding-left:  smash-size($smash-gutter / 2);
+	padding-right: smash-size($smash-gutter / 2);
+  }
+  &_adjust
+  {
+	margin-left:  smash-size($smash-gutter / -2);
+	margin-right: smash-size($smash-gutter / -2);
+  }
+  &_col
+  {
+	margin-right: smash-size($smash-gutter / 2);
+	margin-left:  smash-size($smash-gutter / 2);
+  }
+
+/* # Colonnes */
+
+/*
+Format générique : `.rm-grid_col-3`.
+*/
+
+/*
+	<div class="rm-grid rm-grid_adjust">
+	  <div class="rm-grid_col rm-grid_col-3">Lorem ipsum dolor</div>
+	  <div class="rm-grid_col rm-grid_col-3">Lorem ipsum dolor</div>
+	</div>
+*/
+
+  $smash-i: $smash-cols-desktop;
+  
+  @while $smash-i >= 1
+  {
+	&_col-#{$smash-i}
+	{
+	  width: smash-size(smash-grid-cols-width($smash-i));
+		
+	  $smash-i: $smash-i - 1;
+	}
+  }
+
+/* # Colonnes via inline-block */
+
+/*
+Format générique : `.rm-grid-inline-block-auto-3`.
+*/
+
+/*
+Note : les imbications ne sont pas générées par défaut mais il est possible de les gérer.
+*/
+
+/*
+	<div class="rm-grid rm-grid-inline-block-auto-3">
+	  <div>Lorem ipsum dolor</div>
+	  <div>Lorem ipsum dolor</div>
+	  <div>Lorem ipsum dolor</div>
+	</div>
+*/
+
+  $smash-i: $smash-cols-desktop;
+  
+  @while $smash-i >= 1
+  {
+	&-inline-block-auto-#{$smash-i}
+	{
+	  & > *
+	  {
+		width: smash-grid-col-width($smash-i);
+		
+		$smash-i: $smash-i - 1;
+	  }
+	}
+  }
+
+/* # Colonnes via flexbox */
+
+/* http://www.alsacreations.com/tuto/lire/1659-une-grille-responsive-avec-flexbox-et-LESS.html */
+
+/* Note : la possibilité de générer des grilles avec moins de colonnes (et donc des colonnes plus larges) est commentée, elle génère par défaut trop de code inutilisé. */
+
+/*
+	<div class="rm-grid-flex">
+	  <div class="rm-grid-flex_span-4">Lorem ipsum dolor</div>
+	  <div class="rm-grid-flex_span-2">Lorem ipsum dolor</div>
+	</div>
+*/
+
+  @if $smash-flexbox
+  {
+	&-flex
+	{
+	  @include smash-grid-flex;
+	  
+	  display: flex;
+	  flex-wrap: wrap;
+	  flex-direction: row;
+	  
+	  margin-left: smash-size($smash-gutter) * -1;
+	
+	  & > *
+	  {        
+		display: block; // IE
+		
+		box-sizing: border-box;
+		
+		border-left: smash-size($smash-gutter) solid transparent;
+		background-clip: padding-box;
+	  }      
+	}
+	
+//    $smash-i: $smash-cols-desktop;
+//    
+//    @while $smash-i > 0
+//    {
+//      &-flex-#{$smash-i}
+//      {
+//        @include smash-grid-flex($smash-i);
+//      }
+//      
+//      $smash-i: $smash-i - 1;
+//    }
+  }
+}

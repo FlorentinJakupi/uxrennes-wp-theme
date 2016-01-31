@@ -1,0 +1,21 @@
+/* # Logo */
+
+&-logo
+{
+	&-main 
+	{
+		width: smash-size(150px);
+	  	margin-right: auto;
+	  	margin-left: auto;
+
+		@include mq($until: tablet)
+		{
+			margin-bottom: smash-size($smash-lh, 'em');
+		}
+
+		@include mq(tablet)
+		{	
+			margin-bottom: smash-size($smash-lh*2, 'em');
+		}
+	}
+}

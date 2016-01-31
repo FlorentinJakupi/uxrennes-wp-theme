@@ -1,0 +1,31 @@
+/*!
+Theme Name: UX Rennes
+Theme URI: http://uxrennes.co
+Author: UX Rennes
+Author URI: http://uxrennes.co
+Version: 1.0
+Text Domain: uxrennes-theme
+Description: Le thème de base d'UX Rennes.
+*/
+
+/* # Styles dédiés pour les navigateurs modernes */
+
+/*
+ - Support de IE<=8 désactivé.
+ - Support de l’unité `rem` activé.
+ - Support des _medias-queries_ activé.
+ - Support de _flexbox_ activé. // IE10+
+ 
+Note : Il est possible de ne changer que la première des valeurs, les autres sont répercutées automatiquement.
+*/
+
+$smash-lte-ie8: false !default;
+
+$mq-responsive: not $smash-lte-ie8 !default;
+
+$smash-rem:     not $smash-lte-ie8 !default;
+$smash-flexbox: not $smash-lte-ie8 !default;
+
+/* # Import des partiels */
+
+@import '_framework/core/imports';

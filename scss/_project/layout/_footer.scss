@@ -1,0 +1,158 @@
+/* # Styles spécifiques au pied de page */
+
+&-footer 
+{
+	background-color: $black;
+	color: $white;	
+
+	
+	a 
+	{
+		color: inherit;
+		@include background-image(linear-gradient(rgba(#000,0) 94%, rgba($white,1) 100%));
+		
+		@include mq(tablet)
+		{
+			@include inline-block(top);
+		}
+	}
+
+	input,
+	select,
+	textarea
+	{
+		&,
+		&:focus,
+		&:active
+		{
+			border-color: $white;
+		}
+	}
+
+	input
+	{
+		&:focus,
+		&:active
+		{
+			@include input-placeholder
+			{
+				color: rgba($black, .9);
+			}
+		}
+	}
+
+	button,
+	input[type="button"],
+	input[type="submit"]
+	{
+		background-color: $red;
+		white-space: nowrap;
+		
+		&:focus,
+		&:active 
+		{
+			background-color: darken($red, 6);
+		}
+	}
+
+	&_form-label
+	{
+		@include smash-visually-hidden();
+		
+		// .ie9 &
+		// {
+		// 	@include smash-visually-visible();
+		// }
+	}
+
+	.#{$smash-prefix}-big
+	{
+		text-align: left;
+		font-weight: bold;
+	}
+
+	.#{$smash-prefix}-grid-container
+	{
+		@include mq($until: tablet)
+		{
+			padding-top: smash-size($smash-lh, 'em');
+			padding-bottom: smash-size($smash-lh, 'em');
+		}
+
+		@include mq(tablet, desktop)
+		{
+			padding-top: smash-size($smash-lh*2, 'em');
+			padding-bottom: smash-size($smash-lh*2, 'em');
+		}
+
+		@include mq(desktop)
+		{
+			padding-top: smash-size($smash-lh*3, 'em');
+			padding-right: smash-size(smash-grid-cols-width(4) + $smash-gutter);
+			padding-bottom: smash-size($smash-lh*3, 'em');
+		}
+	}
+
+	.#{$smash-prefix}-table
+	{
+		@include mq($until: phablet)
+		{
+			&,
+			> * 
+			{
+				display: block;
+			}
+
+			.clear 
+			{
+				margin-top: smash-size($smash-lh/2, 'em');
+			}
+		}
+
+		@include mq(phablet)
+		{
+			width: 100%;
+			
+			> * 
+			{
+				vertical-align: bottom; 
+			}
+			
+			> *:first-child 
+			{
+				width: 75%;
+				
+				// .ie9 &
+				// {
+				// 	width: 70%;
+				// }
+			}
+
+			button,
+			input[type="submit"]
+			{
+				white-space: nowrap;
+			}
+		}
+
+
+	}
+
+	&_more 
+	{
+		@include mq(tablet)
+		{
+			margin-top: smash-size($smash-lh*2, 'em');
+		}
+		
+		> * 
+		{
+			margin-bottom: smash-size($smash-lh/2, 'em');
+			
+			&:last-child 
+			{
+				margin-bottom: 0;
+			}
+		}
+	}
+}

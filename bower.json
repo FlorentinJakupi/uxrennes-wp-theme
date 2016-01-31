@@ -1,0 +1,21 @@
+{
+  "name": "UX Rennes",
+  "version": "1.0.0",
+  "authors": [
+    "UX Rennes <collectif.uxrennes@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "sass-mq": "~2.2.0",
+    "modularized-normalize-scss": "~3.0.2"
+  },
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "hashgrid": "*"
+  }
+}

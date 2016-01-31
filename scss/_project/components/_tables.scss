@@ -1,0 +1,99 @@
+/* # Tableaux */
+
+/* # Zebra */
+
+/*
+Note: uniquement appliqué sur le `tbody`.
+*/
+
+  &-zebra
+  {
+    tbody
+    {
+      & > *
+      {
+        &:nth-child(even)
+        {
+          & > *
+          {
+  
+          }
+        }
+      }
+    }
+    &.#{$smash-prefix-framework}-table
+    {
+      & > *
+      {
+        &:nth-child(even)
+        {
+          & > *
+          {
+  
+          }
+        }
+      }
+    }
+  }
+
+/*
+    <table class="smash-table-zebra">
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+    </table>
+*/
+
+/* # Survol des lignes */
+
+/*
+Note: ne fonctionne pas au clavier.
+*/
+
+  &-hover
+  {
+    tbody
+    {
+      & > *
+      {
+        &:hover
+        {
+          & > *
+          {
+  
+          }
+        }
+      }
+    }
+    &.#{$smash-prefix-framework}-table
+    {
+      & > *
+      {
+        &:hover
+        {
+          & > *
+          {
+  
+          }
+        }
+      }
+    }
+  }
+
+/*
+    <table class="smash-table-hover">
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+      <tr>
+        <td>Lorem ipsum dolor.</td>
+        <td>Lorem ipsum dolor.</td>
+      </tr>
+    </table>
+*/

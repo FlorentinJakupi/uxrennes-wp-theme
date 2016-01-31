@@ -4,14 +4,15 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package uxrennes
+ * @package uxrennes-theme
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+/*if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }
 ?>
 
-<aside id="secondary" class="widget-area" role="complementary">
+<div id="secondary" class="widget-area" role="complementary">
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->
+</div>
+<?php */ ?>

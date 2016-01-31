@@ -1,0 +1,182 @@
+/* # Tailles des textes */
+
+@at-root
+{
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6
+	{
+		@include smash-typo($smash-fs0, 'em', $smash-margin: false);
+		font-weight: normal;
+	}
+
+	%uxr-level1,
+	%uxr-level2,
+	%uxr-level3,
+	%uxr-level4,
+	%uxr-level5,
+	%uxr-level6
+	{
+		text-transform: uppercase;
+		letter-spacing: 0.005em;	
+	}
+
+	%uxr-level1
+	{
+		@include smash-typo($smash-h1, 'em');
+	}
+
+	%uxr-level2
+	{
+		@include smash-typo($smash-h2, 'em');
+	}
+
+	%uxr-level3
+	{
+		@include smash-typo($smash-h3, 'em');
+		
+		@include mq($until: tablet)
+		{
+			line-height: normal;
+		}
+	}
+
+	%uxr-level4
+	{
+		@include smash-typo($smash-h4, 'em', $smash-margin: false);
+		margin-bottom: smash-size($smash-lh/2, 'em', $smash-h4);
+	}
+
+	%uxr-level5
+	{
+		@include smash-typo($smash-h5, 'em');
+	}
+
+	%uxr-level6
+	{
+		@include smash-typo($smash-h6, 'em');
+	}
+
+	
+
+	body,
+	.#{$smash-prefix-framework}-body
+	{
+		font-family: $montserrat;
+		@include smash-typo($smash-fs0, 'em', $smash-bfs, $smash-margin: false);
+		
+		@include mq($until: tablet)
+		{			
+			// 16px, calculated in em
+			font-size: smash-size($smash-fs-mobile, 'em', $smash-bfs);
+			// line-height is inherited :)
+		}
+
+		@include mq(wide)
+		{
+			// 25px, calculated in em
+			//font-size: smash-size($smash-fs-wide, 'em', $smash-bfs);
+			// line-height is inherited :)
+		}
+	}
+}
+
+&-bigger
+{
+	font-weight: bold;
+	@include smash-typo($smash-bigger, 'em');
+}
+
+&-big
+{
+	margin-top: smash-size($smash-lh, 'em');
+	margin-bottom: smash-size($smash-lh, 'em');
+	text-align: center;
+
+	@include mq(almost_tablet)
+	{
+		@include smash-typo($smash-big, 'em');
+	}
+}
+
+&-small
+{
+	@include smash-typo($smash-small, 'em');
+}
+
+&-smaller
+{
+	@include smash-typo($smash-smaller, 'em');
+}
+
+&-title
+{
+	&-alpha,
+	&-beta 
+	{
+		font-family: $monoton; 
+		text-transform: uppercase;
+		font-weight: normal; 
+		word-spacing: 0.1em;
+	}
+
+	&-alpha 
+	{
+		@include mq($until: desktop)
+		{
+			@include smash-typo(45px, 'em');
+		}
+		
+		@include mq(desktop)
+		{
+			@include smash-typo(70px, 'em');
+		}
+	}
+
+	&-beta
+	{
+		max-width: smash-size(700px);
+		letter-spacing: 0.008em;
+		line-height: 1.2;
+		
+		@include mq($until: desktop)
+		{
+			@include smash-typo(28px, 'em');
+			word-spacing: 0;
+			letter-spacing: 0;
+		}
+		
+		@include mq(desktop)
+		{
+			@include smash-typo(50px, 'em');
+		}
+	}
+
+	&-gamma 
+	{
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		
+		@include mq($until: almost_tablet)
+		{
+			@include smash-typo($smash-big, 'em', $smash-margin: false);
+			margin-bottom: smash-size($smash-lh/2, 'em', $smash-big);
+		}
+
+		@include mq(almost_tablet)
+		{
+			@include smash-typo($smash-h3, 'em');
+			
+			.#{$smash-prefix}-layout-alpha &
+			{
+				max-width: smash-size(450px);
+				margin-right: auto;
+				margin-left: auto;
+			}
+		}
+	}
+}

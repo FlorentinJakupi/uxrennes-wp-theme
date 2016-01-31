@@ -1,0 +1,332 @@
+/* # Gestion des contributions */
+
+
+@at-root 
+{
+	%uxr-contrib
+	{
+		.#{headers()}
+		{
+			font-weight: bold; 
+			
+			> strong,
+			> span 
+			{
+				display: block;
+			}
+
+			> span 
+			{
+				@include smash-typo($smash-fs0, $smash-margin: false);
+				text-transform: none;
+				letter-spacing: 0;   
+			}
+
+			a 
+			{
+				font-weight: normal;
+				text-decoration: none;  
+			}
+		}
+
+		h1
+		{
+			@extend %uxr-level1;
+			margin-top: smash-size($smash-lh*2, 'em', $smash-h1);
+		}
+
+		h2
+		{
+			@extend %uxr-level2;
+			margin-top: smash-size($smash-lh*2, 'em', $smash-h2);
+		}
+
+		h3
+		{
+			@extend %uxr-level3;
+			margin-top: smash-size($smash-lh*3, 'em', $smash-h3);
+			
+			&:first-of-type
+			{
+				margin-top: smash-size($smash-lh*2, 'em', $smash-h3);
+			}
+		}
+
+		h4
+		{
+			@extend %uxr-level4;
+			margin-top: smash-size($smash-lh*2, 'em', $smash-h4);
+		}
+
+		h5
+		{
+			@extend %uxr-level5;
+			margin-top: smash-size($smash-lh*2, 'em', $smash-h5);
+		}
+
+		h6
+		{
+			@extend %uxr-level6;
+			margin-top: smash-size($smash-lh*2, 'em', $smash-h6);
+		}
+
+		h1 + h2,
+		h2 + h3,
+		h3 + h4,
+		h4 + h5,
+		h5 + h6
+		{
+			margin-top: 0;
+		}
+
+		/**/
+		
+		a 
+		{
+			@include mq($until: tablet)
+			{
+				word-wrap: break-word;
+			}
+		}
+
+		/**/
+
+		p
+		{
+
+		}
+		em
+		{
+
+		}
+		strong
+		{
+
+		}
+
+		/**/
+		
+		ul
+		{
+
+		}
+
+		ol
+		{
+			counter-reset: item;
+			
+			> li 
+			{
+				position: relative;
+				list-style: none;
+				
+				&:before
+				{
+					display: block;
+					position: absolute;	
+					left: smash-size( -37px );
+					content: counter(item) ". ";
+					//content: counters(item, ".") " ";
+					counter-increment: item;
+					text-align: right;
+				}
+				
+				
+			}
+		}
+
+		ul,
+		ol
+		{
+			ul > li 
+			{
+				// &:before
+				// {
+				// 	content: "⋅";
+				// }
+			}
+
+			ol > li 
+			{
+				list-style-type: lower-alpha;
+				
+				&:before
+				{
+					content: "";
+				}
+			}
+
+			ul,
+			ol 
+			{
+				padding-right: 0;
+				margin-top: smash-size($smash-lh, 'em');
+			}
+
+			@include mq($until: tablet)
+			{
+				padding-left: smash-size( $smash-gutter*2 );
+			}
+
+			@include mq(tablet)
+			{
+				padding-right: smash-size( $smash-col + $smash-gutter );
+				padding-left: smash-size( $smash-col + $smash-gutter );
+			}
+		}
+
+		
+
+		/**/
+
+		table
+		{
+
+		}
+		td
+		{
+
+		}
+		th
+		{
+
+		}
+		thead
+		{
+
+		}
+		tfoot
+		{
+
+		}
+		tbody
+		{
+
+		}
+
+		/**/
+
+		q,
+		cite,
+		blockquote 
+		{
+			font-style: italic;	
+		}
+
+		q
+		{
+
+		}
+
+		cite
+		{
+
+		}
+
+		blockquote
+		{
+			> p
+			{
+				font-size: 1.1em;
+				line-height: 1.5;	
+			}
+
+			footer 
+			{
+				margin-top: smash-size($smash-lh/-2, 'em');
+				font-style: normal;	
+			}
+
+			p:last-child 
+			{
+				margin-bottom: 0; 
+			}
+
+			@include mq($until: tablet)
+			{
+				margin-right: 0;
+				margin-left: 0;
+			}
+
+		}
+
+		code
+		{
+
+		}
+
+		
+
+		
+
+		/**/
+
+		
+		figcaption
+		{
+
+		}
+
+		img,
+		figure,
+		object,
+		svg,
+		video
+		{
+			max-width: 100%;
+			height: auto;
+		}
+
+		u 
+		{
+			text-decoration: none;
+			@include background-image(linear-gradient(rgba(#000,0) 98%, rgba($black,1) 98%));
+		}
+	}
+
+}
+
+&-contrib
+{
+	@extend %uxr-contrib;
+	
+	> *:last-child
+	{
+		margin-bottom: 0;
+	}
+}
+
+&-asset
+{
+	&-fullwidth
+	{
+		max-width: 100%;
+		height: auto;  
+		
+		@include mq($until: tablet)
+		{
+			max-width: none !important;
+			@include smash-calc('width', '100% + #{$smash-gutter}');
+			margin-right: smash-size($smash-gutter*-1);
+			margin-left: smash-size($smash-gutter*-1);
+		}
+
+		@include mq(tablet, desktop)
+		{
+		}
+
+		@include mq(desktop)
+		{
+			$margin: ((1280-940)*100)/940;	
+			//margin-right: $margin/2 * 1%;
+			
+			$width: (1280 - (1280 - 940) / 2) * 100 / 1280;
+			@include smash-calc('width', '#{$width} * 1%');
+		}
+
+		+ .#{$smash-prefix}-grid-container
+		{
+			margin-top: smash-size($smash-lh*2, 'em');
+		}
+	}
+}

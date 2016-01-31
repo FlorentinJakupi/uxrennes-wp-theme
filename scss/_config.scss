@@ -1,0 +1,169 @@
+/* # Variables globales du projet */
+
+/* # Préfixes des classes générées */
+
+/*
+Ces classes sont ajoutées devant les sélecteurs.
+
+ - `smash` correspond à la bibliothèque.
+ - `xx` correspond à votre projet (et doit être configuré).
+*/
+
+/*
+(Il est possible de sortir de cette encapsulation avec `@at-root{}`.)
+*/
+
+$smash-prefix-framework: 'uxr' !default;
+$smash-prefix-project:   'uxr' !default;
+$smash-prefix:            $smash-prefix-project !default;
+
+/* # Modèle de boîte */
+
+$smash-box-sizing: true !default;
+
+/* # Unité préférée pour les calculs */
+
+/* `em`, `rem`, `pt` ou `px`. */
+
+/* (`pt` et `px` n’ont ici qu’un intêret très limité.) */
+
+$smash-prefered-unit: 'rem' !default;
+
+/* # Configuration de _Sass-mq_ */
+
+/* https://github.com/sass-mq/sass-mq */
+
+/* Il faut penser à configurer la grille et le _plugin_ #grid en fonction des choix réalisés ici (et qui seront propres au projet). */
+
+$mq-breakpoints: (
+	mobile:               320px,
+	phablet:              480px,
+	almost_tablet:        640px,
+	tablet:               768px,
+	desktop:              1024px,
+	wide:                 1300px,
+
+	wordpress_admin_bar:  782px
+);
+
+//$mq-show-breakpoints: (mobile, phablet, almost_tablet, tablet, desktop, wide);
+
+/* # Grille */
+
+/*
+ - `$smash-gutter` : largeur des gouttières ;
+ - `$smash-col` : largeur des colonnes ;
+ - `$smash-cols-desktop` : nombre de colonnes en _desktop_ ;
+ - `$smash-external-gutters` : gouttières externes (ne fonctionne pas avec les grilles fluides et les gouttières fluides) ;
+ - `$smash-fluid-gutter-fixed` : gouttières des grilles fluides de largeurs fixes (ne fonctionne pas sous IE7-).
+*/
+
+$smash-gutter:              20px !default;
+$smash-col:    $smash-gutter * 3 !default;
+$smash-cols-desktop:          12 !default;
+$smash-external-gutters:   false !default;
+$smash-fluid-gutter-fixed: false !default;
+
+/* # Typographie */
+
+/*
+ - `$smash-bfs` : _font-size_ navigateur ;
+ - `$smash-fs0` : _font-size_ projet.
+*/
+
+$smash-bfs:       16px !default;
+
+// Default project font-size
+$smash-fs0:       18px !default;
+
+$smash-fs-mobile:   $smash-bfs !default;
+$smash-fs-wide:     21px !default;
+
+/*
+ - `$smash-ratios` : des ratios basés sur les intervalles musicaux utilisés à différents endroits du projet.
+*/
+
+$smash-ratios:(
+  double-octave:    1/4,         // 0.25
+  major-twelfth:    1/3,         // 0.3333
+  major-eleventh:   3/8,         // 0.375
+  major-tenth:      2/5,         // 0.4
+  octave:           1/2,         // 0.5
+  major-seventh:    8/15,        // 0.5333
+  minor-seventh:    9/16,        // 0.5625
+  major-sixth:      3/5,         // 0.6
+  golden:           1/1.618,     // 0.6180
+  minor-sixth:      5/8,         // 0.625
+  fifth:            2/3,         // 0.6666
+  augmented-fourth: 1/1.4142135, // 0.7071 (1/√2)
+  fourth:           3/4,         // 0.75
+  major-third:      4/5,         // 0.8
+  minor-third:      5/6,         // 0.8333
+  major-second:     8/9,         // 0.8888
+  minor-second:     15/16,       // 0.9375
+  prime:            1/1          // 1
+) !default;
+
+/*
+ - `$smash-lh` : hauteur de ligne.
+*/
+
+$smash-lh: 27px !default;
+
+/* # Échelles typographiques */
+
+/*
+ - `$smash-ratio` : le ratio choisi pour les calculs ;
+ - `$smash-number1` : le nombre important principal ;
+ - `$smash-number2` : le nombre important secondaire ;
+ - `$smash-offset` : le décalage inital sur les échelles.
+*/
+
+$smash-ratio: map-get($smash-ratios, fifth) !default;
+$smash-number1: $smash-fs0 * 1 !default;
+$smash-number2: $smash-fs0 * 2 !default;
+$smash-offset:            0 !default;
+$smash-body:    $smash-fs0 !default;
+
+
+/* # Transition */
+
+$smash-transition:        .3s !default;
+
+
+/* # Palette de couleurs */
+/* Pour donner un nom aux couleurs : http://chir.ag/projects/name-that-color/ */
+
+$green: 		#0F0    !default;
+$debug: 		$green 	!default;
+
+$black:       	#000    !default;
+$cod-gray: 		#1a1a1a !default;
+$heavy-metal:   #212622 !default;
+
+$red:         	#e84040 !default;
+$error:       	$red 	!default;
+
+$silver: 		#ccc 	!default;
+
+$white:       	#fff    !default;
+
+/* # Font-size */
+
+$smash-h1: 		33px !default;
+$smash-h2: 		31px !default;
+$smash-h3: 		30px !default;
+$smash-h4: 		18px !default;
+$smash-h5: 		17px !default;
+$smash-h6: 		16px !default;
+
+$smash-bigger: 	23px !default;
+$smash-big: 	21px !default;
+$smash-small: 	19px !default;
+$smash-smaller: 17px !default;
+
+
+/* # Polices */
+
+$montserrat: 	'montserrat', sans-serif !default;
+$monoton: 		'monoton',    cursive !default;

@@ -1,0 +1,130 @@
+/* # Homepage */
+
+@at-root
+{
+	
+	// h1{
+	//   text-align: center;
+	//   text-transform: uppercase;
+	//   font-weight: bold;
+	//   line-height: 1.2em;
+	//   margin-bottom: 27px;
+	  
+	  /*font-size: 70px;
+	  font-family: "Monoton", cursive;
+	  text-transform: uppercase;
+	  font-weight: normal; 
+	  word-spacing: 0.1em;*/
+	//}
+
+
+	
+
+	/* Addendum MG 2015/11/08 */
+	.#{$smash-prefix}-uxdeiz
+	{
+	  padding: .5em;
+	  background-color: #e84040;
+	  text-align: center;
+	  
+	  a 
+	  {
+		background: none;
+	  }
+	}
+
+
+	.#{$smash-prefix}-uxdeiz,
+	.#{$smash-prefix}-uxdeiz * 
+	{
+	  color: #fff;
+	}
+
+	.#{$smash-prefix}-uxdeiz *
+	{
+	  margin-bottom: 0;
+	}
+
+	.#{$smash-prefix}-uxdeiz a 
+	{
+	  text-decoration: none;
+	}
+
+	.#{$smash-prefix}-uxdeiz a:focus,
+	.#{$smash-prefix}-uxdeiz a:hover,
+	.#{$smash-prefix}-uxdeiz a:active
+	{
+	  color: inherit;
+	}
+
+	.#{$smash-prefix}-footer_form-label
+	{
+		@include smash-visually-hidden();
+	}
+
+	.mc_embed_signup_scroll label
+	{
+		display: block;
+	}
+
+	.mc_embed_signup_scroll input,
+	.mc_embed_signup_scroll button,
+	.mc_embed_signup_scroll .button
+	{
+		//margin: 13px 0 0;
+	}
+
+	@include mq($until: almost_tablet)
+	{
+		.#{$smash-prefix}-big
+		{
+			margin-top: smash-size($smash-lh/2, 'em', $smash-big);
+		}
+
+		.#{$smash-prefix}-uxdeiz span
+		{
+			display: none;
+		}
+
+		.#{$smash-prefix}-table
+		{	
+			> * + * 
+			{
+				margin-top: smash-size($smash-lh, 'em');
+			}
+		}
+	}
+
+	@include mq(almost_tablet)
+	{	
+		
+		.#{$smash-prefix}-table
+		{
+			display: table;
+			width: 100%;
+		}
+		
+		.#{$smash-prefix}-table > *
+		{
+			display: table-cell;
+			vertical-align: bottom;
+			
+			input
+			{
+				border-right: 0;
+			}
+		}
+
+		.#{$smash-prefix}-table > *:first-child 
+		{
+			width: 75%;
+		}
+
+		.mc_embed_signup_scroll button,
+		.mc_embed_signup_scroll input[type="submit"]
+		{
+			white-space: nowrap;
+			margin-top: 0;
+		}
+	}
+}

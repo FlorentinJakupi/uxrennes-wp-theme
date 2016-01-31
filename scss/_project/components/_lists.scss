@@ -1,0 +1,16 @@
+/* # Listes */
+
+@at-root
+{
+	%inline-list
+	{
+		padding-left: 0;
+		list-style: none;
+
+		> * 
+		{
+			@include inline-block(top);
+			margin-bottom: 0;
+		}
+	}
+}

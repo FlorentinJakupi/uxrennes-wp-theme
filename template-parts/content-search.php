@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package uxrennes
+ * @package uxrennes-theme
  */
 
 ?>
@@ -15,16 +15,17 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php uxrennes_posted_on(); ?>
-		</div><!-- .entry-meta -->
+			<?php uxr_posted_on(); ?>
+		</div>
 		<?php endif; ?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+	</div>
 
 	<footer class="entry-footer">
-		<?php uxrennes_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+		<?php uxr_entry_footer(); ?>
+	</footer>
+</article>
+

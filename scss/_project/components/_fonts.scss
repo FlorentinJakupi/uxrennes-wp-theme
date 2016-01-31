@@ -1,0 +1,32 @@
+/* # Déclarations des polices */
+
+// NB: there's no need to call TTF, EOT, nor SVG fonts.
+// cf. https://twitter.com/kReEsTaL/status/644518292581912576
+
+@at-root 
+{
+	@include font-face(
+						'monoton',
+						font-files('monoton-regular-webfont.woff2', woff2,
+						'monoton-regular-webfont.woff', woff),
+						$weight: normal,
+						$style: normal
+	);
+	
+	@include font-face(
+						'montserrat',
+						font-files('montserrat-regular-webfont.woff2', woff2,
+						'montserrat-regular-webfont.woff', woff),
+						$weight: normal,
+						$style: normal
+	);
+	
+	@include font-face(
+						'montserrat',
+						font-files('montserrat-bold-webfont.woff2', woff2,
+						'montserrat-bold-webfont.woff', woff),
+						$weight: bold,
+						$style: normal
+	);
+
+}

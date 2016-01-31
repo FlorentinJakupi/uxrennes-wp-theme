@@ -1,0 +1,278 @@
+/* # Styles génériques */
+
+@at-root
+{
+
+	/* # Modèle de boîte */
+
+	@if $smash-box-sizing
+	{
+		*
+		{
+			&,
+			&:before,
+			&:after
+			{
+				box-sizing: border-box;
+			}
+		}	
+	}
+
+	/* # Couleurs */
+
+/*
+On force des couleurs de fond et de texte pour contourner les préférences utilisateurs.
+*/
+
+html
+{
+	background-color: $white;
+	color: $black;
+	
+	// Magic line that smoothes font-rendering on WebKit engines.
+	-webkit-font-smoothing: antialiased;
+	
+	// Magic line that smoothes font-rendering on Gecko engines.
+	-moz-osx-font-smoothing: grayscale;
+
+	// Change the focus color of clicked element in iOS	
+	-webkit-tap-highlight-color: transparent;
+	
+	// Optimize legibility if possible
+	text-rendering: optimizeLegibility;
+}
+
+/*
+# États des liens
+*/
+
+a
+{   
+	color: $red;
+	text-decoration: none;
+	@include background-image(linear-gradient(rgba(#000,0) 94%, rgba($red,1) 100%));
+	
+	// Please note: only remove the focus if you DO
+	// provide a visual alternative.
+	//outline: none;
+	// Never remove outline without providing an alternative!
+	// A11y is love ♥︎
+		
+	&:hover,
+	&:focus
+	{
+		background: none;
+	}
+
+	&:visited
+	{
+
+	}
+}
+
+/* # Images (et médias) */
+
+/*
+Par défaut les images de fonds ne sont pas répétées.
+*/
+
+*
+{
+	&,
+	&:before,
+	&:after
+	{
+		background-repeat: no-repeat;
+	}
+}
+
+/*
+Et les images de contenus sont forcées en `block`.
+*/
+
+img,
+audio,
+canvas,
+video,
+svg
+{
+	@include inline-block(top);
+}
+
+figure
+{
+	margin: 0;
+}
+
+/* # Marges par défaut */
+
+p,
+table,
+dl,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+dl,
+dd,
+pre,
+.#{$smash-prefix-framework}-table,
+.wp-caption,
+.contact-form > div,
+.entry-thumb,
+.size-large,
+.size-full
+{
+	margin-top: 0;
+	margin-bottom: smash-size($smash-lh, 'em');
+}
+
+
+pre 
+{
+	white-space: pre-wrap;
+}
+
+
+/*
+Note : pas de marge basse lors des imbrications.
+*/
+
+ul,
+ol,
+dl
+{
+	ul,
+	ol,
+	dl
+	{
+		margin-bottom: 0;
+	}
+}
+
+
+dt 
+{
+	font-weight: bold;
+}
+
+dd 
+{
+	margin-left: 0;
+}
+
+ins 
+{
+	text-decoration: none;
+}
+
+//
+// Videos
+//
+video 
+{
+	width: 100%    !important;
+	height: auto   !important;
+}
+
+/* # Séparateur */
+
+/*
+Le décalage sur le rythme vertical provoqué par la bordure est corrigé par la marge négative.
+Le décalage visuel provoqué par la marge négative est annulé par le positionnement.
+*/
+
+hr
+{
+	clear: both;
+	border: 0;
+	border-top:  1px solid;
+	margin-top: -1px;
+	top:         1px;
+	position: relative;
+}
+
+/* # _Resize_ sur les _textareas_ */
+
+/*
+	<p>
+		<label for="textarea">
+			<span class="block">Lorem ipsum dolor</span>
+			<span class="block"><textarea id="textarea" name="textarea"></textarea></span>
+		</label>
+	</p>
+	*/
+
+	textarea
+	{
+		resize: vertical;
+		overflow: auto;
+		min-height: smash-size($smash-lh * 2);
+	}
+
+	/* # _Reset_ sur les _fieldsets_ */
+
+	/* http://thatemil.com/blog/2015/01/03/reset-your-fieldset/ */
+
+/*
+	<fieldset class="smash-reset">
+	  <legend>Lorem</legend>
+	  <p>Lorem ipsum dolor</p>
+	</fieldset>
+	*/
+
+	fieldset.#{$smash-prefix-framework}-reset
+	{
+		border:    0;
+		margin:    0;
+		min-width: 0;
+		padding: 0.000001em 0 0 0;
+
+		legend
+		{
+			padding: 0;
+			display: table;
+		}
+	body:not(:-moz-handler-blocked) & // fx
+	{
+	//    	display: table-cell;
+	}
+}
+
+@if $smash-box-sizing
+{
+	input[type='search']
+	{
+		box-sizing: border-box;
+	}
+}
+
+  [hidden]  // IE <= 10
+  {
+  	display: none;
+  }
+  
+  
+  /* # Pseudo-éléments */
+  
+  [data-before]
+  {
+  	&:before
+  	{
+  		content: attr(data-before);
+  	}
+  }
+  [data-after]
+  {
+  	&:after
+  	{
+  		content: attr(data-after);
+  	}
+  }
+}
